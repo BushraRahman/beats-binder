@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-   This is the {{titlePage}}
+   This is the {{titlePage}}</br>
+   <h2>Games that are parts of Franchises:</h2>
    <ul>
    {% for game in gamesList %}
       {% if game.Franchise == True %}
-         <li>{{game}}</li>
+         <li>{{game.name}}</li>
+      {% endif %}
+   {% endfor %}
+   </ul>
+   <h2>Games that are Ethically Ambiguous:</h2>
+   <ul>
+   {% for game in gamesList %}
+      {% if game.ethicallyAmbiguous == True %}
+         <li>{{game.name}}</li>
       {% endif %}
    {% endfor %}
    </ul> 
