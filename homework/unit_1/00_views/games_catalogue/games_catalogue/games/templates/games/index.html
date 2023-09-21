@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-   This is the game index
+   This is the {{titlePage}}
+   <ul>
+   {% for game in gamesList %}
+      {% if game.Franchise == True %}
+         <li>{{game}}</li>
+      {% endif %}
+   {% endfor %}
+   </ul> 
 {% endblock content %}
