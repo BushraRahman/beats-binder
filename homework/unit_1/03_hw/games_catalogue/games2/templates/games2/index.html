@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+   This is the {{titlePage}}</br>
+   <h2>Games that are Rated E for Everyone:</h2>
+   <ul>
+    {% for game in gamesList %}
+    {% if game.ethicallyAmbiguous == False %}
+       <li>{{game.name}}</li>
+    {% endif %}
+ {% endfor %}
+   </ul>
+   <h2>Games that are NOT part of franchises:</h2>
+   <ul>
+   {% for game in gamesList %}
+      {% if game.ethicallyAmbiguous == False %}
+         <li>{{game.name}}</li>
+      {% endif %}
+   {% endfor %}
+   </ul> 
+{% endblock content %}
