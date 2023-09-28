@@ -8,7 +8,22 @@ def index(request):
    return render(request, "games/index.html", context = {'titlePage' : titlePage,
                                                          'gamesList' : gamesList})
    
+# def cookies(request):
+#    response = render(request, "games/cookies.html")
+#    response.set_cookie(key ="HI", value = "Bonjour")
+#    return response
+
 def cookies(request):
-   response = render(request, "games/cookies.html")
-   response.set_cookie(key ="HI", value = "Bonjour")
+   dico_cookies = request.COOKIES
+   visit_nbr = 0
+   if 'visit_nbr' in dico_cookies:
+       try:
+           visit_nbr = int(dico_cookies['visit_nbr']) + 1
+       except:
+           visit_nbr = 1
+   else:
+       visit_nbr = 1
+   response = render(request, "games/cookies.html",
+                     context={'visit_nbr': visit_nbr})
+   response.set_cookie(key="visit_nbr", value=visit_nbr)
    return response
