@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import datetime
 
 def index(request):
    print("This is the games index...")
@@ -25,5 +26,6 @@ def cookies(request):
        visit_nbr = 1
    response = render(request, "games/cookies.html",
                      context={'visit_nbr': visit_nbr})
-   response.set_cookie(key="visit_nbr", value=visit_nbr)
+   response.set_cookie(key="visit_nbr", value=visit_nbr,
+max_age=datetime.timedelta(seconds=10))
    return response
