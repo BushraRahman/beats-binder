@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 import datetime
+import json
 
 def index(request):
    print("This is the games index...")
@@ -32,4 +34,27 @@ max_age=datetime.timedelta(seconds=10))
    return response
 
 def forms(request):
+    if request.method == "POST":
+        if "fav_genre" not in request.POST or "fav_game" not in request.POST:
+            messages.add_message(request, messages.ERROR, "The form sent is incomplete")
+            return render(request, "games/forms.html")        
+        response = redirect("games:game_info")     
+        response.set_cookie(key="game_data",value=json.dumps({"fav_game": request.POST["fav_game"],
+             "fav_genre": request.POST["fav_genre"],}))
+        return response
     return render(request, "games/forms.html")
+
+def game_info(request):
+    
+    dico_cookies = request.COOKIES
+    dico_context = {}
+   # import pdb;pdb.set_trace()
+    if 'game_data' in dico_cookies:
+        try:
+            dico_game_data = json.loads(dico_cookies['game_data'])
+            dico_context['game_data'] = dico_game_data
+         #   import pdb;pdb.set_trace()
+        except:
+            messages.add_message(request, messages.ERROR, "There is an error on your game data")
+    #import pdb;pdb.set_trace()
+    return render(request, "games/game_info.html", context=dico_context)

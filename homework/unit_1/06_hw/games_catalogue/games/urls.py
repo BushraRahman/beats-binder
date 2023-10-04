@@ -8,4 +8,6 @@ urlpatterns = [
    path("", views.index, name="index"),
    path('cookies/', views.cookies, name='cookies'),
    path('forms/', views.forms, name='forms'),
+   path('game_info/', views.game_info, name='game_info'),
+
 ]
