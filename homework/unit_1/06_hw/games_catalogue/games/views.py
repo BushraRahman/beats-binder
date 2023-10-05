@@ -65,11 +65,25 @@ def new_forms(request):
        form = GameForm(request.POST)
        if form.is_valid():
            # process the data
-           response.set_cookie(key="game_data", value=json.dumps(
-{'fav_game': request.POST['fav_game'],
-'characters': request.POST['characters'],
-'fav_genre': request.POST['fav_genre']}))
-           return response
+        response = redirect("games:new_game_info")
+        response.set_cookie(key="game_data", value=json.dumps(
+{'id_name': request.POST['name'],
+'id_characters': request.POST['characters'],
+'id_genre': request.POST['genre']}))
+        return response
    else:
        form = GameForm()
    return render(request, "games/new_forms.html", {'game_form': form})
+
+
+def new_game_info(request):
+    
+    dico_cookies = request.COOKIES
+    dico_context = {}
+    if 'game_data' in dico_cookies:
+        try:
+            dico_game_data = json.loads(dico_cookies['game_data'])
+            dico_context['game_data'] = dico_game_data
+        except:
+            messages.add_message(request, messages.ERROR, "There is an error on your game data")
+    return render(request, "games/new_game_info.html", context=dico_context)
