@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .games_forms import GameForm
 from django.contrib import messages
 import datetime
 import json
@@ -58,3 +59,17 @@ def game_info(request):
             messages.add_message(request, messages.ERROR, "There is an error on your game data")
     #import pdb;pdb.set_trace()
     return render(request, "games/game_info.html", context=dico_context)
+
+def new_forms(request):
+   if request.method == "POST":
+       form = GameForm(request.POST)
+       if form.is_valid():
+           # process the data
+           response.set_cookie(key="game_data", value=json.dumps(
+{'fav_game': request.POST['fav_game'],
+'characters': request.POST['characters'],
+'fav_genre': request.POST['fav_genre']}))
+           return response
+   else:
+       form = GameForm()
+   return render(request, "games/new_forms.html", {'game_form': form})

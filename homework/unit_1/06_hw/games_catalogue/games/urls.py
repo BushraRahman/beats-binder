@@ -9,5 +9,7 @@ urlpatterns = [
    path('cookies/', views.cookies, name='cookies'),
    path('forms/', views.forms, name='forms'),
    path('game_info/', views.game_info, name='game_info'),
+   path('new_forms/', views.new_forms, name='new_forms'),
+
 
 ]
