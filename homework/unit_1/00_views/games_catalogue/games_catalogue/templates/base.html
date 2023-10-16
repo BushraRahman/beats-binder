@@ -6,14 +6,17 @@
 <head>
    {% block head %}
    {% endblock head %}
+   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 
 <body>
+   <div class="header_title">
    Games Catalogue App<br/><br/>
+   <img src="{% static 'images/gta6.jpg' %}" alt="gta6">
+   </div>
    {% block content %}
         {% endblock content %}
 </body>
-
 <script>
    {% block js %}
    {% endblock js %}

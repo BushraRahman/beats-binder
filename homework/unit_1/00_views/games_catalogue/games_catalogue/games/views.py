@@ -4,6 +4,6 @@ from django.http import HttpResponse
 def index(request):
    #return HttpResponse("Hello, world. You're at the games index.")
    titlePage = "Games Index"
-   gamesList = [{"name" : "Furry Shades of Gray", "Franchise" : False}, {"name" : "Among Us", "Franchise" : False}, {"name" : "Elden Ring", "Franchise" : True}, {"name" : "Minecraft", "Franchise" : True}]
+   gamesList = [{"name" : "Elder Scrolls: Oblivion", "Franchise" : True, "ethicallyAmbiguous" : False}, {"name" : "Furry Shades of Gray", "Franchise" : False, "ethicallyAmbiguous" : True}, {"name" : "Grand Theft Auto 6", "Franchise" : False, "ethicallyAmbiguous" : True}, {"name" : "Elden Ring", "Franchise" : True, "ethicallyAmbiguous" : False}, {"name" : "Minecraft", "Franchise" : True,  "ethicallyAmbiguous" : False}]
    return render(request, "games/index.html", context = {'titlePage' : titlePage,
                                                          'gamesList' : gamesList})
