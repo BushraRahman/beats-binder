@@ -1,6 +1,45 @@
-h1 {
-    background-color: #b9fcff;
+h1, p, li {
+    font-family : sans-serif;
+    background-color: royalblue;
     text-align: center;
     font-style:italic;
-    font-size : 100px;
+    font-size : 30px;
+}
+
+p{
+    line-height : 2;
+    font-size : 22px;
+
+}
+
+footer p {
+    font-size : 10px
+}
+
+article header p {
+    font-style:italic;
+}
+
+#gameLove {
+    text-align: center;
+    font-size : 30px;
+}
+
+#devFoot {
+    text-align: center;
+    font-size : 20px;
+}
+
+#coralText {
+    color : coral;
+}
+
+#moccasinText {
+    color : moccasin;
+}
+
+.game {
+    background-color: coral;
+    line-height: 2;
+    list-style: none;
 }
