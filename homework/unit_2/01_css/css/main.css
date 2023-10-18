@@ -34,12 +34,14 @@ article header p {
     color : coral;
 }
 
-#moccasinText {
+span{
     color : moccasin;
 }
 
-.game {
-    background-color: coral;
-    line-height: 2;
-    list-style: none;
+span span{
+    color : coral;
+}
+
+span span span{
+    color : darkgoldenrod;
 }
