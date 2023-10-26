@@ -49,7 +49,7 @@ console.log("4.")
 console.log((input * (9/5))+32)
 console.log()
 
-5.
+//5.
 
 let message = "chicken"
 console.log("5.")
