@@ -41,7 +41,7 @@ def forms(request):
             return render(request, "games/forms.html")        
         response = redirect("games:game_info")     
         response.set_cookie(key="game_data",value=json.dumps({"fav_game": request.POST["fav_game"],
-             "fav_genre": request.POST["fav_genre"],}))
+             "fav_genre": request.POST["fav_genre"],}), samesite ='Lax')
         return response
     return render(request, "games/forms.html")
 
