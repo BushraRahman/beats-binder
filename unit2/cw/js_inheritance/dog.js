@@ -31,5 +31,5 @@ class Poodle extends Dog {
     }
 }
 
-const barky = new Poodle('barky', 'marrow', 'woof')
+const barky = new Poodle('barky', 'chocolate', 'woof')
 barky.makeNoise();
