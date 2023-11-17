@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<body>
+<select
+class = "countries_select"
+name = "countries"></select>
+<div class="result"></div>
+<script src="js/ajax.js"></script>
+</body>
+</html>
