@@ -28,9 +28,7 @@ const populateSelectCountries = function (data) {
 
 selectCountriesContainer.addEventListener("change", function() {
     const selectedCountry = this.value;
-    const requestResult = new XMLHttpRequest();
-    const promise = fetch(`https://restcountries.com/v3.1/name/${selectedCountry}`);
-    requestResult.send();
+    fetch(`https://restcountries.com/v3.1/name/${selectedCountry}`)
 
     .then(function(response) {
         const countryInfo = response.json;
