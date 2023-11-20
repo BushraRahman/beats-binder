@@ -32,8 +32,8 @@ selectCountriesContainer.addEventListener("change", function() {
     const promise = fetch(`https://restcountries.com/v3.1/name/${selectedCountry}`);
     requestResult.send();
 
-    requestResult.addEventListener("load", function() {
-        const countryInfo = JSON.parse(this.responseText)[0];
+    .then(function(response) {
+        const countryInfo = response.json;
         displayCountryInfo(countryInfo);
     })
 });
