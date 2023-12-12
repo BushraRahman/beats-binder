@@ -1,13 +1,17 @@
-SELECT * FROM students
-SELECT * FROM classes
-SELECT * FROM teacher_class
-SELECT * FROM teachers
-SELECT * FROM assignments
+SELECT * FROM students;
+SELECT * FROM classes;
+SELECT * FROM teacher_class;
+SELECT * FROM teachers;
+SELECT * FROM assignments;
 
-SELECT * FROM students WHERE student_grade_level = 12
-SELECT * FROM classes WHERE class_name = 'APCSA'
-SELECT * FROM teacher_class WHERE teacher_id = '7772946294'
-SELECT * FROM teachers WHERE teacher_name = 'Holmes'
-SELECT * FROM assignments WHERE assignment_name = 'HW 12'
+SELECT * FROM students WHERE student_grade_level = 12;
+SELECT * FROM classes WHERE class_name = 'APCSA';
+SELECT * FROM teacher_class WHERE teacher_id = '7772946294';
+SELECT * FROM teachers WHERE teacher_name = 'Holmes';
+SELECT * FROM assignments WHERE assignment_name = 'HW 12';
 
-SELECT * FROM classes LEFT JOIN
+SELECT * FROM students LEFT JOIN student_assignment students.student_osis = student_assignment.student_osis;
+SELECT * FROM classes RIGHT JOIN teacher_class classes.class_code = teacher_class_code;
+SELECT * FROM teacher_class JOIN teachers teacher_class.teacher_id = teachers.teacher_id;
+SELECT * FROM teachers JOIN teacher_assignment teachers.teacher_id = teacher_assignment.teacher_id
+SELECT * FROM assignments JOIN class_assignment assignments.assignment_id = class_assignment.assignment_id
