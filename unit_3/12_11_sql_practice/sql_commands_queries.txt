@@ -1,3 +1,32 @@
+CREATE TABLE students (
+    student_osis int
+    student_classes line
+    student_name varchar
+)
+CREATE TABLE assignments (
+    assignment_id int
+    assignment_name varchar
+    assignment_description line
+    assignment_due_date date
+)
+CREATE TABLE classes (
+    class_code varchar
+    class_student_osis int
+    class_teacher varchar
+)
+CREATE TABLE teacher_class (
+    id int
+    teacher_id int
+    class_code varchar
+    class_periods line
+)
+CREATE TABLE teachers (
+    teacher_id int
+    teacher_classes line
+    text_email varchar
+)
+
+
 SELECT * FROM students;
 SELECT * FROM classes;
 SELECT * FROM teacher_class;
@@ -10,8 +39,8 @@ SELECT * FROM teacher_class WHERE teacher_id = '7772946294';
 SELECT * FROM teachers WHERE teacher_name = 'Holmes';
 SELECT * FROM assignments WHERE assignment_name = 'HW 12';
 
-SELECT * FROM students LEFT JOIN student_assignment students.student_osis = student_assignment.student_osis;
-SELECT * FROM classes RIGHT JOIN teacher_class classes.class_code = teacher_class_code;
+SELECT * FROM classes RIGHT JOIN teacher_class classes.class_code = teacher_class.class_code;
 SELECT * FROM teacher_class JOIN teachers teacher_class.teacher_id = teachers.teacher_id;
-SELECT * FROM teachers JOIN teacher_assignment teachers.teacher_id = teacher_assignment.teacher_id
-SELECT * FROM assignments JOIN class_assignment assignments.assignment_id = class_assignment.assignment_id
+SELECT * FROM students RIGHT JOIN teachers students.student_osis = teachers.teacher_id;
+SELECT * FROM students RIGHT JOIN assignments students.student_name = assignments.assignment_name;
+SELECT * FROM students RIGHT JOIN classes students.student_name = classes.classes_name;
