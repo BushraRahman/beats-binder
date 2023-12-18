@@ -1,0 +1,50 @@
+
+create table players (
+	id serial primary key,
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	age TINYINT,
+	position varchar(50),
+	team_id tinyint,
+	foreign key (team_id) references teams (id)
+	)
+	
+create table countries (
+	id smallint primary key,
+	name varchar(50),
+	unique (name))
+	
+create table leagues(
+	id smallint primary key,
+	name varchar(100),
+	country_id smallint,
+	unique (name))
+	
+create table teams (
+	id smallint primary key,
+	name varchar(100),
+	country_id smallint,
+	league_id smallint,
+	unique (name),
+	foreign key (country_id) references countries (id),
+	foreign key (league_id) references games (league_id))
+	
+create games (
+	id serial primary key,
+	date date,
+	league_id smallint,
+	home_team_id smallint,
+	away_team_id smallint,
+	home_team_goals smallint,
+	away_team_goals smallint,
+	foreign key (league_id) references leagues (id),
+	foreign key (home_team_id) references teams (id),
+	foreign key (away_team_id) references teams (id))
+
+create table leagues_teams (
+	league_id smallint,
+	team_id smallint,
+	foreign key (league_id) references leagues(id),
+	foreign key (team_id) references teams(id))
+
+
