@@ -1,2 +1,6 @@
 env_3.11.5
 secrets.json
+song/__pycache__
+album/__pycache__
+artist/__pycache__
+core/__pycache__
