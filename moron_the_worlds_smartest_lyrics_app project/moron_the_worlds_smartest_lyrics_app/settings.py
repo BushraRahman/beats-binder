@@ -22,10 +22,10 @@ with open(os.path.join(
     secrets = json.loads(f.read())
 
 def get_secret(setting, secrets=secrets):
-'''Get the secret variable or return explicit exception.'''
+    '''Get the secret variable or return explicit exception.'''
     try:
         return secrets[setting]
-        except KeyError:
+    except KeyError:
         error_msg = 'Set the {0} environment variable'.format(setting)
         raise ImproperlyConfigured(error_msg)
 
