@@ -1,4 +1,4 @@
-# Moron: The Smartest Lyrics App
+# Moron: The World's Smartest Lyrics App
 
 ### Hui Wen Weng
 - hweng40@stuy.edu

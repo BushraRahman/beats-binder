@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
+    'artist',
+    'album',
+    'song',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +72,7 @@ ROOT_URLCONF = 'moron_the_worlds_smartest_lyrics_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR) + '/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
