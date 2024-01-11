@@ -17,17 +17,18 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # JSON-based secrets module
-with open(os.path.join(
-    BASE_DIR, moron_the_worlds_smartest_lyrics_app, 'secrets.json')) as f:
-    secrets = json.loads(f.read())
 
-def get_secret(setting, secrets=secrets):
-    '''Get the secret variable or return explicit exception.'''
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = 'Set the {0} environment variable'.format(setting)
-        raise ImproperlyConfigured(error_msg)
+#with open(os.path.join(
+    #BASE_DIR, moron_the_worlds_smartest_lyrics_app, 'secrets.json')) as f:
+    #secrets = json.loads(f.read())
+
+#def get_secret(setting, secrets=secrets):
+    #'''Get the secret variable or return explicit exception.'''
+    #try:
+        #return secrets[setting]
+    #except KeyError:
+        #error_msg = 'Set the {0} environment variable'.format(setting)
+        #raise ImproperlyConfigured(error_msg)
 
 
 # Quick-start development settings - unsuitable for production
