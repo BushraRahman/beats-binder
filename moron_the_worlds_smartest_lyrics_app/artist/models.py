@@ -11,3 +11,6 @@ class Artist(models.Model):
     image = models.ImageField(unique=True, null=False)
     top_albums = models.ManyToManyField(Album)
     top_songs = models.ManyToManyField(Song)
+    
+def __str__(self):
+    return self.name

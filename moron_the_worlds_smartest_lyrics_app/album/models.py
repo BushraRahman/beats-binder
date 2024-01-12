@@ -10,3 +10,6 @@ class Album(models.Model):
     genre = models.IntegerField(unique=True, null=False)
     tracklist = models.URLField(unique=True, null=False)
     album_artist = models.ManyToManyField('artist.Artist')
+
+def __str__(self):
+    return self.name

@@ -9,4 +9,8 @@ class Song(models.Model):
     release_date = models.DateField()
     preview = models.URLField(unique=True, null=False)
     song_artist = models.ManyToManyField('artist.Artist')
+    song_featured = models.ManyToManyField('artist.Artist', related_name='featured')
     song_album = models.ManyToManyField(Album)
+
+def __str__(self):
+    return self.name
