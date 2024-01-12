@@ -5,4 +5,5 @@ artist/__pycache__
 core/__pycache__
 api_key.py
 secrets.json
-.__pycache__
+*.pyc
+__pycache__/
