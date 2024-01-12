@@ -3,8 +3,6 @@ song/__pycache__
 album/__pycache__
 artist/__pycache__
 core/__pycache__
-moron_the_worlds_smartest_lyrics_app/api_key.py
-moron_the_worlds_smartest_lyrics_app/secrets.json
+api_key.py
+secrets.json
 .__pycache__
-python-version
-gitignore
