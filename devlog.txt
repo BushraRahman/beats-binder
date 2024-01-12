@@ -1,0 +1,70 @@
+2024-01-08
+HuiWenW — 2024-01-08 | 14:50
+Worked on design document
+
+SadatA — 2024-01-08 | 14:50
+Worked on design document
+
+BushraR — 2024-01-08 | 14:50
+Worked on design document
+
+ZidanniC — 2024-01-08 | 14:50
+Worked on design document
+
+
+
+2024-01-09
+Hui Wen — 2024-01-09 | 10:15
+Completed database design
+Updated sitemap
+
+
+
+2024-01-10
+SadatA — 2024-01-10 | 14:50
+Created templates folder 
+Added template files in artist app 
+
+HuiWenW — 2024-01-10 | 14:50
+Updated settings
+Created urls.pys
+Added core app
+Added default home page
+
+BushraR — 2024-01-10 | 23:44 
+Started updating settings so that the project can connect to a database
+Updated requirements_env to have pgadmin4
+
+
+
+2024-01-11 
+BushraR — 2024-01-11 | 14:11
+Began a notebook to retrieve API data
+Bug: No module named 'moron_the_worlds_smartest_lyrics_app.settings'
+Renamed folder in an attempt to solve the bug. Created a bug in settings. 
+
+BushraR — 2024-01-11 | 14:28
+Commented out the problematic code in settings to avoid the bug.
+
+SadatA — 2024-01-11 | 14:50
+Started artist_detail HTML on template
+
+HuiWenW — 2024-01-11 | 14:50
+Started working on the API notebook. Fixed previous 'moron_the_worlds_smartest_lyrics_app.settings' error.
+Undid the folder name change: fixed the cause of the bug that was in settings
+Bug: SSLCertVerificationError in the API notebook
+
+BushraR — 2024-01-11 | 14:52
+Uncommented out the code in settings
+Edited notebook to retrieve and print out artist details
+Saved artist details to a JSON file
+
+HuiWenW — 2024-01-11 | 22:46
+Fixed API connection
+Changed Genius API to Deezer API
+Setting up Deezer API
+
+BushraR — 2024-01-11 | 23:30
+Finished updating settings so that the project connects to a database
+Added very basic template to core and very basic template for the home page in album
+Added url and view for the album home page

@@ -36,13 +36,13 @@ def get_secret(setting, secrets=secrets):
     #BASE_DIR, moron_the_worlds_smartest_lyrics_app, 'secrets.json')) as f:
     #secrets = json.loads(f.read())
 
-#def get_secret(setting, secrets=secrets):
-    #'''Get the secret variable or return explicit exception.'''
-    #try:
-        #return secrets[setting]
-    #except KeyError:
-        #error_msg = 'Set the {0} environment variable'.format(setting)
-        #raise ImproperlyConfigured(error_msg)
+def get_secret(setting, secrets=secrets):
+    '''Get the secret variable or return explicit exception.'''
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = 'Set the {0} environment variable'.format(setting)
+        raise ImproperlyConfigured(error_msg)
 
 
 # Quick-start development settings - unsuitable for production
