@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # JSON-based secrets module
 with open(os.path.join(
-    BASE_DIR, 'moron_the_worlds_smartest_lyrics_app', 'secrets.json'
+    BASE_DIR, 'secrets.json'
 )) as f:
     secrets = json.loads(f.read())
 
