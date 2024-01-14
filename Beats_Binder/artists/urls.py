@@ -1,9 +1,7 @@
 from django.urls import path
-
-from . import views
-
-app_name = "artists"
+from .views import ArtistListView, search_artist
 
 urlpatterns = [
-  #path("", views.home_view, name="home_view"),
+    path('', ArtistListView.as_view(), name='artist_list'),
+    path('search/', search_artist, name='search_artist'),
 ]
