@@ -1,9 +1,4 @@
 env_3.11.5
-song/__pycache__
-album/__pycache__
-artist/__pycache__
-core/__pycache__
-api_key.py
 secrets.json
 *.pyc
 __pycache__/
