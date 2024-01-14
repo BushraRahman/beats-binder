@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+        <title>Home Page</title>
+    </head>
+
+    <body>
+        <h1 class="title">Beats Binder</h1>
+
+        <div class="navbar">
+            <div class="link"><a href="/artists">Artist</a></div>
+            <div class="link"><a href="/albums">Albums</a></div>
+            <div class="link"><a href="/songs">Songs</a></div>
+        </div>
+
+        <form class="search">
+            Look up an artist, album, or track:
+            <input type="text" placeholder="Search" id="search_box/">
+            <button type="submit" id="search_click">🔍</button>
+        </form>
+
+        <div>Rankings</div>
+
+    </body>
+
+    <script src="{% static 'home.js' %}"></script>
+</html>
