@@ -7,6 +7,14 @@ document.getElementById("search_click").onclick = function () {
     }
 }
 
+function validateInput() {
+    let search_value = document.forms["search"]["input"].value;
+    if (serach_value == null || input == "") {
+       alert("Please enter the username. Can’t be blank or empty !!!");
+       return false;
+    }
+ }
+
 const callAPI = async function (value) {
     const url = 'https://deezerdevs-deezer.p.rapidapi.com/search?q=' + value;
     const options = {
