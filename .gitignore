@@ -1,4 +1,5 @@
 env_3.11.5
+api_key.py
 secrets.json
 *.pyc
 __pycache__/
