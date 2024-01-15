@@ -9,21 +9,47 @@
     </head>
 
     <body>
-        <h1 class="title">Beats Binder</h1>
+        <div class="title">Beats Binder</div>
 
         <div class="navbar">
-            <div class="link"><a href="/artists">Artist</a></div>
-            <div class="link"><a href="/albums">Albums</a></div>
-            <div class="link"><a href="/songs">Songs</a></div>
+            <div class="links"><a href="/artists">Artist</a></div>
+            <div class="links"><a href="/albums">Albums</a></div>
+            <div class="links"><a href="/songs">Songs</a></div>
+            <form>
+                <input type="text" placeholder="Search" id="search_box" required="required"/>
+                <button type="button" id="search_click">🔍</button>
+            </form>
         </div>
 
-        <form class="search">
-            Look up an artist, album, or track:
-            <input type="text" placeholder="Search" id="search_box" required="required"/>
-            <button type="button" id="search_click">🔍</button>
-        </form>
+        <div class="charts">
 
-        <div>Rankings</div>
+            <table>
+                <tr><th>Top Artists</th></tr>
+
+                {% for artist in top_artists %}
+                <tr><td><a href={{artist.image}}>{{artist.artist_name}}</a></td></tr>
+                {% endfor %}
+            </table>
+
+
+            <table>
+                <tr><th>Top Albums</th></tr>
+
+                {% for album in top_albums %}
+                <tr><td><a href={{album.image}}>{{album.album_name}}</a></td></tr>
+                {% endfor %}
+            </table>
+
+
+            <table>
+                <tr><th>Top Tracks</th></tr>
+
+                {% for track in top_tracks %}
+                <tr><td><a href={{track.image}}>{{track.song_name}}</a></td></tr>
+                {% endfor %}
+            </table>
+
+        </div>
 
     </body>
 
