@@ -19,6 +19,10 @@
                 <input type="text" placeholder="Search" id="search_box" required="required"/>
                 <button type="button" id="search_click">🔍</button>
             </form>
+            <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="run_script">Click Me! :D</button>
+</form>
         </div>
 
         <div class="charts">
