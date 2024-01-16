@@ -5,5 +5,5 @@ from . import views
 app_name = "songs"
 
 urlpatterns = [
-  #path("", views.home_view, name="home_view"),
+  path("", views.SongListView.as_view(), name="list_view"),
 ]
