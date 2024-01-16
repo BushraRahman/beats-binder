@@ -15,9 +15,11 @@
             <div class="links"><a href="/artists">Artist</a></div>
             <div class="links"><a href="/albums">Albums</a></div>
             <div class="links"><a href="/songs">Songs</a></div>
-            <form>
-                <input type="text" placeholder="Search" id="search_box" required="required"/>
-                <button type="button" id="search_click">🔍</button>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{search_form.as_p}}
+                {% comment %} <input type="text" class="search_box" name="search_box">
+                <input type="submit" class="search_submit" value="🔍"> {% endcomment %}
             </form>
         </div>
 
