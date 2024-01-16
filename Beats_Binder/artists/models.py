@@ -7,7 +7,7 @@ class Artist(models.Model):
 	albums = models.ManyToManyField('albums.Album')
 	songs = models.ManyToManyField('songs.Song')
 	nb_album = models.IntegerField
-
+	saved = models.BooleanField(default=False)
 # Create your models here.
 
 # Create your models here.
