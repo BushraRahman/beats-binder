@@ -1,5 +1,5 @@
 import requests
-def addEntry(id):
+def addAlbumEntry(id):
     id = str(id)
     url = "https://deezerdevs-deezer.p.rapidapi.com/album/" + id
     headers = {

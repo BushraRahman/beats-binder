@@ -1,5 +1,14 @@
 import requests
-def addEntry(id):
+def addSongEntry(id):
+    name = "generic song name"
+    duration=124
+    preview = 
+
+def addAlbumEntry(id):
+    id = 447279465
+    name = "WE MUST LOVE"
+    
+def addAlbumEntry(id):
     id = str(id)
     url = "https://deezerdevs-deezer.p.rapidapi.com/album/" + id
     headers = {
@@ -14,6 +23,7 @@ def addEntry(id):
     duration = response["duration"]
     release_date = response["release_date"]
     record_type = response["record_type"]
+    
     print(name+cover+genre+str(nb_tracks)+str(duration)+release_date+record_type)
 
 addEntry(68496491)
