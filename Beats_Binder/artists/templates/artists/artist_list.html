@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+<h1>Artists</h1>
+<ul>
 {% for artist in object_list %}
-{{ artist.name }}
+<li>{{ artist.name }}</li>
 {% endfor %}
+</ul>
 {% endblock content %}
