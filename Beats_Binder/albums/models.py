@@ -11,5 +11,5 @@ class Album(models.Model):
 	duration = models.IntegerField()
 	release_date = models.DateField()
 	record_type = models.CharField(max_length=50)
-
+	saved = models.BooleanField(default=False)
 # Create your models here.

@@ -7,4 +7,5 @@ class Song(models.Model):
 	artists = models.ManyToManyField('artists.Artist')
 	duration = models.IntegerField()
 	preview = models.URLField(max_length=200)
+	saved = models.BooleanField(default=False)
 # Create your models here.
