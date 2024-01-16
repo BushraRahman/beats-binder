@@ -56,7 +56,8 @@ def addSongEntry(deezerID, saved):
         artist = Artist.objects.get(deezer_id = response["artist"]["id"])
 
 def addArtistEntry(deezerID, saved):
-    print("OMG IS THIS WORKING?")
+    for x in Artist.objects.all().iterator():
+        x.delete() 
     url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
     headers = {
     "X-RapidAPI-Key": "dc2e72cb1cmsh271df14842a824bp190aaajsnf4720429b177",

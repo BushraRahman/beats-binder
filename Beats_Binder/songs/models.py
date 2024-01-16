@@ -1,7 +1,7 @@
 from django.db import models
 
 class Song(models.Model):
-	deezer_id = models.IntegerField()
+	deezer_id = models.IntegerField(unique=True)
 	name = models.CharField(max_length=100)
 	artist = models.ManyToManyField('artists.Artist')
 	album = models.ManyToManyField('albums.Album')
