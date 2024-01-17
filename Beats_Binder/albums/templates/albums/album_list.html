@@ -1,6 +1,11 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends "base.html" %}
+<body>
+		{% block content %}
+<h1>Albums</h1>
+<ul>
 {% for album in object_list %}
-{{ album.name }}
+<li>{{ album.name }}</li>
 {% endfor %}
 {% endblock content %}
+</ul>
+</body>
