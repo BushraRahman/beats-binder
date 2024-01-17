@@ -56,15 +56,16 @@ def addSongEntry(deezerID, saved):
         artist = Artist.objects.get(deezer_id = response["artist"]["id"])
 
 def addArtistEntry(deezerID, saved):
-    for x in Artist.objects.all().iterator():
-        x.delete() 
-    url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
-    headers = {
-    "X-RapidAPI-Key": "dc2e72cb1cmsh271df14842a824bp190aaajsnf4720429b177",
-    "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
-    }
-    response = requests.get(url, headers=headers).json()
-    name = response["name"]
-    cover = response["picture_small"]
-    nb_album = response["nb_album"]
-    Artist.objects.create(deezer_id=deezerID,name=name,cover=cover,nb_album=nb_album,saved=saved).save()
+    try: 
+        artist = Artist.objects.get(deezer_id = deezerID)
+    except IntegrityError as error:
+        url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
+        headers = {
+        "X-RapidAPI-Key": "dc2e72cb1cmsh271df14842a824bp190aaajsnf4720429b177",
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
+        }
+        response = requests.get(url, headers=headers).json()
+        name = response["name"]
+        cover = response["picture_small"]
+        nb_album = response["nb_album"]
+        Artist.objects.create(deezer_id=deezerID,name=name,cover=cover,nb_album=nb_album,saved=saved).save()
