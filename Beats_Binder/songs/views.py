@@ -1,14 +1,19 @@
-from django.shortcuts import render
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from song.models import Song
+from django.http import HttpResponse
 from django.contrib import messages
+import datetime
+import json
+
+from django.shortcuts import render
 from .models import Song
-# Create your views here.
 
-class SongListView(ListView):
-	model = Song
-	
+def list_view(request):
+    songs = Song.objects.all()
 
-# Create your views here.
+    context = {
+        'songs': songs,
+    }
+
+    return render(request, 'song_list.html', context)
+
