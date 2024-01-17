@@ -28,9 +28,19 @@ def home_view(request):
     tracks_data.close()
 
     if request.method == 'POST' and 'run_script' in request.POST:
+        addArtistEntry(1,True)
         addArtistEntry(14754433,True)
+        addArtistEntry(12246,True)
         addAlbumEntry(447279465,True)
+        addAlbumEntry(302068167,True)
         addSongEntry(2303246265,True)
+        addSongEntry(2303246275,True)
+        addSongEntry(2303246285,True)
+        addSongEntry(2303246295,True)
+        addSongEntry(2303246305,True)
+        addSongEntry(89077521,True)
+        addSongEntry(1682413517,True)
+
     return render(request, 'home/home.html', 
                   context={'top_artists': top_artists,
                           'top_albums': top_albums,
