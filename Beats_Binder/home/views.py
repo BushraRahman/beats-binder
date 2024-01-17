@@ -33,6 +33,11 @@ def home_view(request):
         addArtistEntry(12246,True)
         addAlbumEntry(447279465,True)
         addAlbumEntry(302068167,True)
+        addAlbumEntry(317522947,True)
+        addAlbumEntry(10164620,True)
+        addAlbumEntry(97412692,True)
+        addAlbumEntry(106875912,True)
+        addAlbumEntry(106710782,True)
         addSongEntry(2303246265,True)
         addSongEntry(2303246275,True)
         addSongEntry(2303246285,True)
@@ -71,7 +76,9 @@ def searchAPI(search_input):
     return search_results
 
 def addArtistEntry(deezerID, saved):
+    print("PART 2")
     if not Artist.objects.filter(deezer_id=deezerID).exists():
+        print(" PSRT 3")
         url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
         headers = {
         "X-RapidAPI-Key": "dc2e72cb1cmsh271df14842a824bp190aaajsnf4720429b177",
@@ -92,19 +99,18 @@ def addAlbumEntry(deezerID,saved):
         }
         response = requests.get(url, headers=headers).json()
         name = response["title"]
-        print(name)
         cover = response["cover_medium"]
-        print(cover)
         genre = response["genres"]["data"][0]["name"]
-        print(genre)
         nb_tracks = response["nb_tracks"]
         duration = response["duration"]
         release_date = response["release_date"]
         record_type = response["record_type"]
-        print(record_type)
         album = Album(deezer_id=deezerID,name=name,cover=cover,genre=genre,nb_tracks=nb_tracks,duration=duration,release_date=release_date,record_type=record_type,saved=saved)
         album.save()
-        album.artist.add(Artist.objects.get(deezer_id = 14754433))
+        if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
+            print("... is this running?")
+            addArtistEntry(response["artist"]["id"],False)
+        album.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
 
 def addSongEntry(deezerID, saved):
     if not Song.objects.filter(deezer_id=deezerID).exists():
