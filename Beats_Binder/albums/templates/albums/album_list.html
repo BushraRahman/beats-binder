@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for album in object_list %}
+{{ album.name }}
+{% endfor %}
+{% endblock content %}

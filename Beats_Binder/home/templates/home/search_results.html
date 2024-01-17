@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+        <title>Search Results Page</title>
+    </head>
+
+    <body>
+        <h1 class="title">Beats Binder</h1>
+        {{search_results}}
+        {% for result in search_results %}
+        {{result}}
+        {% endfor %}
+
+    </body>
+
+    <script src="{% static 'home.js' %}"></script>
+</html>

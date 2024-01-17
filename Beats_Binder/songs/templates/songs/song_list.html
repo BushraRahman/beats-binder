@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for song in object_list %}
+{{ song.name }}
+{% endfor %}
+{% endblock content %}
