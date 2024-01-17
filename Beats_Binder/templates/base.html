@@ -20,10 +20,6 @@
                 <input type="text" class="search_box" name="search_box">
                 <input type="submit" class="search_submit" value="🔍">
             </form>
-            <form method="post">
-            {% csrf_token %}
-            <button type="submit" name="run_script">Click Me! :D</button>
-        </form>
     </div>
     {% block content %}
     {% endblock content %}
