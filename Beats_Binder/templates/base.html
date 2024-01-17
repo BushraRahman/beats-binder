@@ -8,7 +8,6 @@
     {% endblock head %}
 </head>
 <body>
-    {% block content %}
     <div class="title"><a href="/">Beats Binder</a></div>
 
         <div class="navbar">
@@ -26,6 +25,7 @@
             <button type="submit" name="run_script">Click Me! :D</button>
         </form>
     </div>
+    {% block content %}
     {% endblock content %}
 </body>
 
