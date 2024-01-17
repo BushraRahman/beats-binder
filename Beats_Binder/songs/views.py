@@ -12,3 +12,11 @@ class SongListView(ListView):
 	
 
 # Create your views here.
+def list_view(request):
+    songs = Song.objects.all()
+
+    context = {
+        'songs': songs,
+    }
+
+    return render(request, 'song_list.html', context)
