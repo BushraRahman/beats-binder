@@ -1,5 +1,11 @@
-{% block content %}
+{% extends "base.html" %}
+<body>
+		{% block content %}
+<h1>Artists</h1>
+<ul>
 {% for artist in object_list %}
-{{ artist.name }}<br>
+<li>{{ artist.name }}</li>
 {% endfor %}
 {% endblock content %}
+</ul>
+</body>

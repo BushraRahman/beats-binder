@@ -10,7 +10,10 @@
 
     <body>
         <h1 class="title">Beats Binder</h1>
-        search results
+        {{search_results}}
+        {% for result in search_results %}
+        {{result}}
+        {% endfor %}
 
     </body>
 
