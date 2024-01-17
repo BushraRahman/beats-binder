@@ -125,6 +125,9 @@ def addSongEntry(deezerID, saved):
         preview = response["preview"]
         song = Song(deezer_id=deezerID,name=name,duration=duration,preview=preview)
         song.save()
+        if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
+            addArtistEntry(response["artist"]["id"],False)
+        song.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
         song.album.add(Album.objects.get(deezer_id = 447279465))
         song.artist.add(Artist.objects.get(deezer_id = 14754433))
 
