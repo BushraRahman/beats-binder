@@ -1,0 +1,84 @@
+h1, p, li {
+    font-family : sans-serif;
+    background-color: royalblue;
+    text-align: center;
+    font-style:italic;
+    font-size : 50px;
+}
+
+p{
+    margin : 0 auto;
+    width : 800px ;
+    font-size : 22px;
+    height : 100%;
+}
+
+footer p {
+    font-size : 10px;
+    width : 800px;
+}
+
+article header p {
+    font-style:italic;
+}
+
+#meLove {
+    text-align: center;
+    font-size : 30px;
+    color : rgba(160, 200, 80, 5); 
+}
+
+#devFoot {
+    text-align: center;
+    font-size : 20px;
+}
+
+#coralText {
+    color : coral;
+}
+
+span{
+    color : moccasin;
+}
+
+span span{
+    color : coral;
+}
+
+span span span{
+    color : darkgoldenrod;
+}
+
+.container {
+    background-color: #f7f7f7;
+    border-top : 5px solid #b9fcff;
+    padding : 20px 50px;
+    width : 800px;
+    margin : 0 auto;
+}
+
+li:nth-child(even) {
+    font-weight : bold;
+}
+
+li {
+    margin : 0 auto;
+    width : 800px ;
+
+}
+
+div p:first-child {
+    font-weight:bold;
+}
+
+a:link {
+    color : coral;
+}
+
+a:visited {
+    color : darkgoldenrod;
+}
+
+p:link {
+    color: rosybrown
+}

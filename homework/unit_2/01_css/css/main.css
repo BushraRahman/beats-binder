@@ -1,0 +1,47 @@
+h1, p, li {
+    font-family : sans-serif;
+    background-color: royalblue;
+    text-align: center;
+    font-style:italic;
+    font-size : 30px;
+}
+
+p{
+    line-height : 2;
+    font-size : 22px;
+
+}
+
+footer p {
+    font-size : 10px
+}
+
+article header p {
+    font-style:italic;
+}
+
+#gameLove {
+    text-align: center;
+    font-size : 30px;
+}
+
+#devFoot {
+    text-align: center;
+    font-size : 20px;
+}
+
+#coralText {
+    color : coral;
+}
+
+span{
+    color : moccasin;
+}
+
+span span{
+    color : coral;
+}
+
+span span span{
+    color : darkgoldenrod;
+}
