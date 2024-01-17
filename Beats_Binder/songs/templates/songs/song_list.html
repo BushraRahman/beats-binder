@@ -13,23 +13,17 @@
             <tr>
                 <th>Deezer ID</th>
                 <th>Title</th>
-                <th>Release Date</th>
                 <th>Preview</th>
-                <th>Song Artist</th>
-                <th>Song Featured</th>
-                <th>Song Album</th>
+                <th>Song Duration</th>
             </tr>
         </thead>
         <tbody>
-            {% for song in songs %}
+            {% for song in object_list %}
                 <tr>
                     <td>{{ song.deezer_id }}</td>
-                    <td>{{ song.title }}</td>
-                    <td>{{ song.release_date }}</td>
+                    <td>{{ song.name }}</td>
                     <td>{{ song.preview }}</td>
-                    <td>{{ song.song_artist }}</td>
-                    <td>{{ song.song_featured }}</td>
-                    <td>{{ song.song_album }}</td>
+                    <td>{{ song.duration }}</td>
                 </tr>
             {% endfor %}
         </tbody>
