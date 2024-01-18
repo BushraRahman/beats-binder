@@ -128,6 +128,8 @@ def addSongEntry(deezerID, saved):
         if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
             addArtistEntry(response["artist"]["id"],False)
         song.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
-        song.album.add(Album.objects.get(deezer_id = 447279465))
-        song.artist.add(Artist.objects.get(deezer_id = 14754433))
+        if not Album.objects.filter(deezer_id = response["album"]["id"]).exists():
+            addArtistEntry(response["artist"]["id"],False)
+        song.album.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
+        
 
