@@ -19,16 +19,11 @@
             <div class="links"><a href="/artists">Artist</a></div>
             <div class="links"><a href="/albums">Albums</a></div>
             <div class="links"><a href="/songs">Songs</a></div>
-            <form action="" method="post">
+            <form action="search_results" method="get">
                 {% csrf_token %}
                 {{search_form.as_p}}
             </form>
         </div>
-
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" name="run_script">Click Me! :D</button>
-        </form>
         
     {% block content %}
     {% endblock content %}

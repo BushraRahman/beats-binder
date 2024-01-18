@@ -48,12 +48,13 @@ def home_view(request):
                           'search_form': SearchForm})
 
 def search_results_view(request):
-    if request.method == "POST":
-        form = SearchForm(request.POST)
+    if request.method == "GET":
+        form = SearchForm(request.GET)
         if form.is_valid():
-            search_box = form.cleaned_data["search_box"]
-            search_result = searchAPI(search_box[0])
-            return render(request, "home/search_results.html", context={"search_results": search_results})
+            search_input = form.cleaned_data["Search"]
+            search_result = searchAPI(search_input)
+            return render(request, "home/search_results.html", context={"search_result": search_result["data"],
+                                                                        "search_input": search_input})
     else: 
         form = SearchForm()
     return render(request, "home/search_results.html", 
