@@ -10,12 +10,11 @@ from .search_form import SearchForm
 # Create your views here.
 
 class AlbumListView(ListView):
-	model = Album
-	
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['search_form'] = SearchForm
-    return context
+    model = Album
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm
+        return context
 
 def search_results_view(request):
     if request.method == "GET":
@@ -28,8 +27,7 @@ def search_results_view(request):
                                                                             "search_form": form})
     else: 
         form = SearchForm()
-    return render(request, "albums/search_results.html", 
-            context={'search_form': SearchForm})
+    return render(request, "albums/search_results.html", context={'search_form': SearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"

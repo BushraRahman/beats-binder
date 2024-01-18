@@ -9,12 +9,11 @@ from .search_form import SearchForm
 # Create your views here.
 
 class ArtistListView(ListView):
-	model = Artist
-    
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['search_form'] = SearchForm
-    return context
+    model = Artist
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm
+        return context
 	
 def search_results_view(request):
     if request.method == "GET":
