@@ -2,15 +2,16 @@
 {% load static %}
 
 <!DOCTYPE html>
+
+{% block content%}
 <html>
 
     <head>
-        <link rel="stylesheet" href="{% static 'home.css' %}">
+        <link rel="stylesheet" href="{% static 'global.css' %}">
         <title>Search Results Page</title>
     </head>
 
     <body>
-        {% block content%}
         <h1>Results for: {{search_input}}</h1>
         <table>
             <tr>
@@ -26,8 +27,8 @@
             <tr>
             {% endfor %}
         </table>
-        {% endblock content %}
     </body>
 
-    <script src="{% static 'home.js' %}"></script>
+    <script src="{% static 'global.js' %}"></script>
 </html>
+{% endblock content %}

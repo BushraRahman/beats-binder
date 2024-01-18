@@ -2,6 +2,8 @@
 {% load static %}
 
 <!DOCTYPE html>
+
+{% block content%}
 <html>
 
     <head>
@@ -10,7 +12,7 @@
     </head>
 
     <body>
-        {% block content%}
+        
         <h1>Results for: {{search_input}}</h1>
         <table>
             <tr>
@@ -26,8 +28,9 @@
             <tr>
             {% endfor %}
         </table>
-        {% endblock content %}
+        
     </body>
 
     <script src="{% static 'home.js' %}"></script>
 </html>
+{% endblock content %}
