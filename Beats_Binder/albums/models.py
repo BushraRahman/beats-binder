@@ -2,8 +2,9 @@ from django.db import models
 
 class Album(models.Model):
 	deezer_id = models.IntegerField(unique=True)
-	name = models.CharField(max_length=50)
-	artist = models.ManyToManyField('artists.Artist')
+	name = models.CharField(max_length=250)
+	artist = models.ManyToManyField('artists.Artist', related_name="album_artist")
+	contributors = models.ManyToManyField('artists.Artist', related_name="album_contributors")
 	cover = models.URLField(max_length=200)
 	genre = models.CharField(max_length=50)
 	nb_tracks = models.IntegerField()
