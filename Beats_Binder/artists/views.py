@@ -14,6 +14,9 @@ class ArtistListView(ListView):
         context = super().get_context_data(**kwargs)
         context['search_form'] = SearchForm
         return context
+
+class ArtistDetailView(DetailView):
+	model = Artist
 	
 def search_results_view(request):
     if request.method == "GET":

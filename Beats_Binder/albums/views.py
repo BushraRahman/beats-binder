@@ -16,6 +16,9 @@ class AlbumListView(ListView):
         context['search_form'] = SearchForm
         return context
 
+class AlbumDetailView(DetailView):
+	model = Album
+
 def search_results_view(request):
     if request.method == "GET":
         form = SearchForm(request.GET)
