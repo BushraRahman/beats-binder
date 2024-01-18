@@ -12,6 +12,11 @@ from .search_form import SearchForm
 class AlbumListView(ListView):
 	model = Album
 	
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['search_form'] = SearchForm
+    return context
+
 def search_results_view(request):
     if request.method == "GET":
         form = SearchForm(request.GET)
@@ -19,7 +24,8 @@ def search_results_view(request):
             search_input = form.cleaned_data["Search"]
             search_result = searchAPI(search_input)
             return render(request, "albums/search_results.html", context={"search_result": search_result["data"],
-                                                                        	"search_input": search_input})
+                                                                        	"search_input": search_input,
+                                                                            "search_form": form})
     else: 
         form = SearchForm()
     return render(request, "albums/search_results.html", 
