@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+        <title>Search Results Page</title>
+    </head>
+
+    <body>
+        {% block content%}
+        <h1>Results for: {{search_input}}</h1>
+        <table>
+            <tr>
+                <th>Track Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+            </tr>
+            {% for result in search_result %}
+            <tr>
+                <td>{{result.title}}</td>
+                <td>{{result.artist.name}}</td>
+                <td>{{result.album.title}}</td>
+            <tr>
+            {% endfor %}
+        </table>
+        {% endblock content %}
+    </body>
+
+    <script src="{% static 'home.js' %}"></script>
+</html>
