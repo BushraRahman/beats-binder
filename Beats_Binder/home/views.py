@@ -45,6 +45,13 @@ def home_view(request):
         addSongEntry(2303246305,True)
         addSongEntry(89077521,True)
         addSongEntry(1682413517,True)
+        addSongEntry(629561092,True)
+        addSongEntry(4601933,True)
+        addSongEntry(2603558,True)
+        modifyAlbumSaved(447279465,True)
+        modifyArtistSaved(14754433,False)
+        modifySongSaved(2303246265,True)
+        addAlbumEntry(106871722,False)
 
     return render(request, 'home/home.html', 
                   context={'top_artists': top_artists,
@@ -77,7 +84,6 @@ def searchAPI(search_input):
     return search_results
 
 def addArtistEntry(deezerID, saved):
-    print("PART 2")
     if not Artist.objects.filter(deezer_id=deezerID).exists():
         print(" PSRT 3")
         url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
@@ -109,9 +115,14 @@ def addAlbumEntry(deezerID,saved):
         album = Album(deezer_id=deezerID,name=name,cover=cover,genre=genre,nb_tracks=nb_tracks,duration=duration,release_date=release_date,record_type=record_type,saved=saved)
         album.save()
         if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
-            print("... is this running?")
             addArtistEntry(response["artist"]["id"],False)
         album.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
+        print(response["contributors"][0]["id"])
+        if (len(response["contributors"]) > 1):
+            for i in range(1, len(response["contributors"])-1):
+                if not Artist.objects.filter(deezer_id = response["contributors"][i]["id"]).exists():
+                    addArtistEntry(response["contributors"][i]["id"],False)
+                album.contributors.add(Artist.objects.get(deezer_id = response["contributors"][i]["id"]))
 
 def addSongEntry(deezerID, saved):
     if not Song.objects.filter(deezer_id=deezerID).exists():
@@ -124,11 +135,36 @@ def addSongEntry(deezerID, saved):
         name = response["title"]
         duration = response["duration"]
         preview = response["preview"]
-        song = Song(deezer_id=deezerID,name=name,duration=duration,preview=preview)
+        song = Song(deezer_id=deezerID,name=name,duration=duration,preview=preview,saved=saved)
         song.save()
         if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
             addArtistEntry(response["artist"]["id"],False)
         song.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
-        song.album.add(Album.objects.get(deezer_id = 447279465))
-        song.artist.add(Artist.objects.get(deezer_id = 14754433))
+        if not Album.objects.filter(deezer_id = response["album"]["id"]).exists():
+            addAlbumEntry(response["album"]["id"],False)
+        song.album.add(Album.objects.get(deezer_id = response["album"]["id"]))
+        if (len(response["contributors"]) > 1):
+            for i in range(1, len(response["contributors"])-1):
+                if not Artist.objects.filter(deezer_id = response["contributors"][i]["id"]).exists():
+                    addArtistEntry(response["contributors"][i]["id"],False)
+                song.contributors.add(Artist.objects.get(deezer_id = response["contributors"][i]["id"]))
+
+def modifyArtistSaved(deezerID, saved):
+    addArtistEntry(deezerID, saved)
+    artist = Artist.objects.get(deezer_id=deezerID)
+    artist.saved = saved
+    artist.save()
+
+def modifyAlbumSaved(deezerID, saved):
+    addAlbumEntry(deezerID, saved)
+    album = Album.objects.get(deezer_id=deezerID)
+    album.saved = saved
+    album.save()
+
+def modifySongSaved(deezerID, saved):
+    addSongEntry(deezerID, saved)
+    song = Song.objects.get(deezer_id=deezerID)
+    song.saved = saved
+    song.save()
+        
 
