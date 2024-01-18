@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ object.name }}</h1>
-<h1> {{ object.release_date }}</h1>
+<h1>Song Name: {{ object.name }}</h1>
+<h1>Artist's Name: {{ object.artist }}</h1>
+<h1>Contributors: {{ object.contributors }}</h1>
+<h1>Album Name: {{ object.album }}</h1>
+<h1>Duration: {{ object.duration }}</h1>
+<h1>Preview: <a href={{ object.preview }}>{{ object.preview }}</a></h1>
 {% endblock content %}

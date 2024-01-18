@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ object.name }}</h1>
-<h1> {{ object.release_date }}</h1>
+<h1>Name: {{object.name}}</h1>
+<h1>Artist's Name: {{ object.artist }}</h1>
+<h1>Contributors: {{ object.contributors }}</h1>
+<h1><img src={{ object.cover }} alt="image" width="200px" height="200px"></h1>
+<h1>Genre: {{ object.genre }}</h1>
+<h1>Number of Tracks: {{ object.nb_tracks }}</h1>
+<h1>Duration: {{ object.duration }}</h1>
+<h1>Release Date: {{ object.release_date }}</h1>
+<h1>Record Type: {{ object.record_type }}</h1>
+
 {% endblock content %}

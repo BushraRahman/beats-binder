@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ object.name }}</h1>
-<h1> {{ object.release_date }}</h1>
+<h1>Artist's Name: {{ object.name }}</h1>
+<h1><img src={{ object.cover }} alt="image" width="200px" height="200px"></h1>
+<h1>Number of Albums: {{ object.nb_album }}</h1>
 {% endblock content %}
