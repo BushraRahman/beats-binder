@@ -33,7 +33,7 @@ def search_results_view(request):
             context={'search_form': SearchForm})
     
 def searchAPI(search_input):
-    url = "https://deezerdevs-deezer.p.rapidapi.com/search"
+    url = "https://deezerdevs-deezer.p.rapidapi.com/search/artists"
     querystring = {"q": search_input}
     headers = {
         "X-RapidAPI-Key": "de8f6f2a3fmsh850207b34ede80bp17e3d8jsnd9883430d914",
