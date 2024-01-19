@@ -12,13 +12,12 @@
     </head>
 
     <body>
-        
-        <h1>Results for: {{search_input}}</h1>
+        <h1>Albums Inventory</h1>
+        <h3>Results for: {{search_input}}</h3>
         <table>
             <tr>
-                <th>Track Title</th>
+                <th>Album Title</th>
                 <th>Artist</th>
-                <th>Album</th>
             </tr>
             {% for result in search_result %}
             <tr>
@@ -28,7 +27,7 @@
                 <td>
                     <form method="post">
                     {% csrf_token %}
-                    <button type="submit" name="run_script">Click Me! :D</button>
+                    <button type="submit" name="run_script">+</button>
                     </form>
                 </td>
             <tr>

@@ -25,10 +25,9 @@ def search_results_view(request):
 		if form.is_valid():
 			search_input = form.cleaned_data["Search"]
 			search_result = searchAPI(search_input)
-			# for i in range(len(search_result["data"])):
-			# 	print(search_result["data"][i])
-			# 	print("HELLOOO??")
-			return render(request, "albums/search_results.html", context={"search_result": search_result["data"],
+			for i in range(len(search_result["data"])):
+				print(search_result["data"][i])
+			return render(request, "albums/albums_results.html", context={"search_result": search_result["data"],
 				"search_input": search_input,
 				"search_form": form})
 	else: 
@@ -36,7 +35,7 @@ def search_results_view(request):
 	return render(request, "albums/search_results.html", context={'search_form': SearchForm})
     
 def searchAPI(search_input):
-    url = "https://deezerdevs-deezer.p.rapidapi.com/search"
+    url = "https://deezerdevs-deezer.p.rapidapi.com/search/album"
     querystring = {"q": search_input}
     headers = {
         "X-RapidAPI-Key": "de8f6f2a3fmsh850207b34ede80bp17e3d8jsnd9883430d914",

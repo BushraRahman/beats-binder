@@ -67,10 +67,10 @@ def search_results_view(request):
             search_input = form.cleaned_data["Search"]
             search_result = searchAPI(search_input)
             for i in range(len(search_result["data"])):
-                #blue = "blue"
-                print(search_result["data"][i]["album"]["id"])
+                print(search_result["data"][i])
             return render(request, "home/search_results.html", context={"search_result": search_result["data"],
-                                                                        "search_input": search_input})
+                                                                        "search_input": search_input,
+                                                                        "search_form": form})
     else: 
         form = SearchForm()
     return render(request, "home/search_results.html", 
