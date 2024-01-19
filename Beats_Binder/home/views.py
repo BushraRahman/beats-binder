@@ -28,6 +28,7 @@ def home_view(request):
     tracks_data.close()
 
     if request.method == 'POST' and 'run_script' in request.POST:
+        print(request.POST)
         addArtistEntry(1,True)
         addArtistEntry(14754433,True)
         addArtistEntry(12246,True)
@@ -66,7 +67,8 @@ def search_results_view(request):
             search_input = form.cleaned_data["Search"]
             search_result = searchAPI(search_input)
             for i in range(len(search_result["data"])):
-                print(search_result["data"][i])
+                #blue = "blue"
+                print(search_result["data"][i]["album"]["id"])
             return render(request, "home/search_results.html", context={"search_result": search_result["data"],
                                                                         "search_input": search_input})
     else: 

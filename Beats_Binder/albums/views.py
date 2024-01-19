@@ -20,17 +20,20 @@ class AlbumDetailView(DetailView):
 	model = Album
 
 def search_results_view(request):
-    if request.method == "GET":
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            search_input = form.cleaned_data["Search"]
-            search_result = searchAPI(search_input)
-            return render(request, "albums/search_results.html", context={"search_result": search_result["data"],
-                                                                        	"search_input": search_input,
-                                                                            "search_form": form})
-    else: 
-        form = SearchForm()
-    return render(request, "albums/search_results.html", context={'search_form': SearchForm})
+	if request.method == "GET":
+		form = SearchForm(request.GET)
+		if form.is_valid():
+			search_input = form.cleaned_data["Search"]
+			search_result = searchAPI(search_input)
+			# for i in range(len(search_result["data"])):
+			# 	print(search_result["data"][i])
+			# 	print("HELLOOO??")
+			return render(request, "albums/search_results.html", context={"search_result": search_result["data"],
+				"search_input": search_input,
+				"search_form": form})
+	else: 
+		form = SearchForm()
+	return render(request, "albums/search_results.html", context={'search_form': SearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
