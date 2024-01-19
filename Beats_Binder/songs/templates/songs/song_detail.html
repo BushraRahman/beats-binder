@@ -5,5 +5,5 @@
 <h1>Contributors: {{ object.contributors }}</h1>
 <h1>Album Name: {{ object.album }}</h1>
 <h1>Duration: {{ object.duration }}</h1>
-<h1>Preview: <a href={{ object.preview }}>{{ object.preview }}</a></h1>
+<h1>Preview: <audio controls><source src={{object.preview}} type="audio/mpeg">Your browser does not support the audio element. </audio>
 {% endblock content %}
