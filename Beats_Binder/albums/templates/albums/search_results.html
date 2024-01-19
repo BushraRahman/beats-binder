@@ -12,19 +12,17 @@
     </head>
 
     <body>
-        
-        <h1>Results for: {{search_input}}</h1>
+        <h1>Albums Inventory</h1>
+        <h3>Results for: {{search_input}}</h3>
         <table>
             <tr>
-                <th>Track Title</th>
+                <th>Album Title</th>
                 <th>Artist</th>
-                <th>Album</th>
             </tr>
             {% for result in search_result %}
             <tr>
                 <td>{{result.title}}</td>
                 <td>{{result.artist.name}}</td>
-                <td>{{result.album.title}}</td>
             <tr>
             {% endfor %}
         </table>
