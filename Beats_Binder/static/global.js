@@ -3,6 +3,8 @@
     let onpageLoad = localStorage.getItem("theme") || "";
     let element = document.body;
     element.classList.add(onpageLoad);
+    // document.getElementById("theme").textContent =
+    //   localStorage.getItem("theme") || "light";
   })();
   
   function themeToggle() {
@@ -13,7 +15,8 @@
     if (theme && theme === "dark_mode") {
       localStorage.setItem("theme", "");
     } else {
-        document.body.classList.remove("dark_mode")
-        current_mode = "light"
+      localStorage.setItem("theme", "dark_mode");
     }
+  
+    // document.getElementById("theme").textContent = localStorage.getItem("theme");
   }
