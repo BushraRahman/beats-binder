@@ -13,6 +13,7 @@
     if (theme && theme === "dark_mode") {
       localStorage.setItem("theme", "");
     } else {
-      localStorage.setItem("theme", "dark_mode");
+        document.body.classList.remove("dark_mode")
+        current_mode = "light"
     }
   }

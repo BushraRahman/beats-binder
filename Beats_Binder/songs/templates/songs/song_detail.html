@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+
+{% block search %}
+    <form action="search_results" method="get">
+        {% csrf_token %}
+        {{search_form.as_p}}
+    </form>
+{% endblock search %}
+
 {% block content %}
 <h1>Song Name: {{ object.name }}</h1>
 <h1>Artist's Name: {{ object.artist }}</h1>

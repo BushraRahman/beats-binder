@@ -1,6 +1,16 @@
 {% extends "base.html" %}
+
+
+{% block search %}
+    <form action="search_results" method="get">
+        {% csrf_token %}
+        {{search_form.as_p}}
+    </form>
+{% endblock search %}
+
+
 <body>
-		{% block content %}
+{% block content %}
 <h1>Albums</h1>
 <ul>
 {% for album in object_list %}
