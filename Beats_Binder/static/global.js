@@ -1,13 +1,22 @@
-current_mode = "light"
-
-function changeMode() {
-    if (current_mode == "light") {
-        document.body.classList.add("dark_mode")
-        current_mode = "dark"
-        console.log("change to dark")
+// On page load set the theme.
+(function() {
+    let onpageLoad = localStorage.getItem("theme") || "";
+    let element = document.body;
+    element.classList.add(onpageLoad);
+    // document.getElementById("theme").textContent =
+    //   localStorage.getItem("theme") || "light";
+  })();
+  
+  function themeToggle() {
+    let element = document.body;
+    element.classList.toggle("dark_mode");
+  
+    let theme = localStorage.getItem("theme");
+    if (theme && theme === "dark_mode") {
+      localStorage.setItem("theme", "");
     } else {
-        document.body.classList.remove("dark_mode")
-        current_mode = "light"
-        console.log("change to light")
+      localStorage.setItem("theme", "dark_mode");
     }
-}
+  
+    // document.getElementById("theme").textContent = localStorage.getItem("theme");
+  }
