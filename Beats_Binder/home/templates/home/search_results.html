@@ -29,6 +29,13 @@
                 <td>{{result.title}}</td>
                 <td>{{result.artist.name}}</td>
                 <td>{{result.album.title}}</td>
+                <td>{{result}}</td>
+                <td> 
+                    <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ result }}>Click Me! :D</button>
+                    </form> 
+                </td>
             <tr>
             {% endfor %}
         </table>
