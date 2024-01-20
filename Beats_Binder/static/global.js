@@ -15,6 +15,5 @@
     } else {
         document.body.classList.remove("dark_mode")
         current_mode = "light"
-        console.log("change to light")
     }
 }
