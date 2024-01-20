@@ -1,18 +1,20 @@
-document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT"
-let mode = document.cookie
-
-function changeMode() {
-    if (mode.includes("light")) {
-        document.body.classList.add("dark_mode")
-        document.cookie = "mode=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+// On page load set the theme.
+(function() {
+    let onpageLoad = localStorage.getItem("theme") || "";
+    let element = document.body;
+    element.classList.add(onpageLoad);
+  })();
+  
+  function themeToggle() {
+    let element = document.body;
+    element.classList.toggle("dark_mode");
+  
+    let theme = localStorage.getItem("theme");
+    if (theme && theme === "dark_mode") {
+      localStorage.setItem("theme", "");
     } else {
         document.body.classList.remove("dark_mode")
-        document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+        current_mode = "light"
+        console.log("change to light")
     }
-}
-
-function updateCookie(cValue) {
-    date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = cName + "=" + cValue + "; " + expires ;
 }
