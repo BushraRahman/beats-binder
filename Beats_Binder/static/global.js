@@ -3,8 +3,6 @@
     let onpageLoad = localStorage.getItem("theme") || "";
     let element = document.body;
     element.classList.add(onpageLoad);
-    // document.getElementById("theme").textContent =
-    //   localStorage.getItem("theme") || "light";
   })();
   
   function themeToggle() {
@@ -17,6 +15,4 @@
     } else {
       localStorage.setItem("theme", "dark_mode");
     }
-  
-    // document.getElementById("theme").textContent = localStorage.getItem("theme");
   }
