@@ -19,10 +19,8 @@
             <div class="links"><a href="/artists">Artist</a></div>
             <div class="links"><a href="/albums">Albums</a></div>
             <div class="links"><a href="/songs">Songs</a></div>
-            <form action="search_results" method="get">
-                {% csrf_token %}
-                {{search_form.as_p}}
-            </form>
+            {% block search %}
+            {% endblock search %}
         </div>
     {% block content %}
     {% endblock content %}

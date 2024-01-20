@@ -1,4 +1,12 @@
 {% extends "base.html" %}
+
+{% block search %}
+    <form action="search_results" method="get">
+        {% csrf_token %}
+        {{search_form.as_p}}
+    </form>
+{% endblock search %}
+
 {% block content %}
 <h1>Artist's Name: {{ object.name }}</h1>
 <h1><img src={{ object.cover }} alt="image" width="200px" height="200px"></h1>

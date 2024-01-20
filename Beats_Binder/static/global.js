@@ -1,13 +1,18 @@
-current_mode = "light"
+document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT"
+let mode = document.cookie
 
 function changeMode() {
-    if (current_mode == "light") {
+    if (mode.includes("light")) {
         document.body.classList.add("dark_mode")
-        current_mode = "dark"
-        console.log("change to dark")
+        document.cookie = "mode=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT"
     } else {
         document.body.classList.remove("dark_mode")
-        current_mode = "light"
-        console.log("change to light")
+        document.cookie = "mode=light; expires=Fri, 31 Dec 9999 23:59:59 GMT"
     }
+}
+
+function updateCookie(cValue) {
+    date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires ;
 }
