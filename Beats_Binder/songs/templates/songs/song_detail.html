@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block search %}
     <form action="search_results" method="get">
@@ -8,10 +9,22 @@
 {% endblock search %}
 
 {% block content %}
-<h1>Song Name: {{ object.name }}</h1>
-<h1>Artist's Name: {{ object.artist }}</h1>
-<h1>Contributors: {{ object.contributors }}</h1>
-<h1>Album Name: {{ object.album }}</h1>
-<h1>Duration: {{ object.duration }} seconds</h1>
-<h1>Preview: <audio controls><source src={{object.preview}} type="audio/mpeg">Your browser does not support the audio element. </audio>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'songs/songs.css' %}">
+    </head>
+<div class="container mt-4">
+    <h1 class="mb-4">Song Name: {{ object.name }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ object.artist }}</h1>
+    <h1 class="mb-4">Contributors: {{ object.contributors }}</h1>
+    <h1 class="mb-4">Album Name: {{ object.album }}</h1>
+    <h1 class="mb-4">Duration: {{ object.duration }} seconds</h1>
+    <h1 class="mb-4">Preview:</h1>
+    <audio controls class="mb-4">
+        <source src="{{ object.preview }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+</html>
 {% endblock content %}

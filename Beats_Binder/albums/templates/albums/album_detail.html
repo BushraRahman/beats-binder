@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block search %}
     <form action="search_results" method="get">
         {% csrf_token %}
@@ -8,14 +8,22 @@
 {% endblock search %}
 
 {% block content %}
-<h1>Name: {{object.name}}</h1>
-<h1>Artist's Name: {{ object.artist }}</h1>
-<h1>Contributors: {{ object.contributors }}</h1>
-<h1><img src={{ object.cover }} alt="image" width="200px" height="200px"></h1>
-<h1>Genre: {{ object.genre }}</h1>
-<h1>Number of Tracks: {{ object.nb_tracks }}</h1>
-<h1>Duration: {{ object.duration }} seconds</h1>
-<h1>Release Date: {{ object.release_date }}</h1>
-<h1>Record Type: {{ object.record_type }}</h1>
-
+<html>
+    <head>
+<link rel="stylesheet" href="{% static 'albums/albums.css' %}">
+    </head>
+    </html>
+<div class="container mt-4">
+    <h1 class="mb-4">Name: {{ object.name }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ object.artist }}</h1>
+    <h1 class="mb-4">Contributors: {{ object.contributors }}</h1>
+    <div class="mb-4">
+        <img src="{{ object.cover }}" alt="image" class="img-fluid" width="200" height="200">
+    </div>
+    <h1 class="mb-4">Genre: {{ object.genre }}</h1>
+    <h1 class="mb-4">Number of Tracks: {{ object.nb_tracks }}</h1>
+    <h1 class="mb-4">Duration: {{ object.duration }} seconds</h1>
+    <h1 class="mb-4">Release Date: {{ object.release_date }}</h1>
+    <h1 class="mb-4">Record Type: {{ object.record_type }}</h1>
+</div>
 {% endblock content %}

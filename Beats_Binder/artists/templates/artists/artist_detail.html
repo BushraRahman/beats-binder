@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block search %}
     <form action="search_results" method="get">
@@ -8,7 +9,18 @@
 {% endblock search %}
 
 {% block content %}
-<h1>Artist's Name: {{ object.name }}</h1>
-<h1><img src={{ object.cover }} alt="image" width="200px" height="200px"></h1>
-<h1>Number of Albums: {{ object.nb_album }}</h1>
+<html>
+    <head>
+<link rel="stylesheet" href="{% static 'artists/artists.css' %}">
+    </head>
+    </html>
+<div class="container mt-4 custom-container">
+    <h1 class="mb-4">Artist's Name: {{ object.name }}</h1>
+    <div class="mb-4">
+        <img src="{{ object.cover }}" alt="image" class="img-fluid" width="200" height="200">
+    </div>
+    <h1 class="mb-4">Number of Albums: {{ object.nb_album }}</h1>
+</div>
 {% endblock content %}
+
+
