@@ -149,7 +149,6 @@ def modifyAlbumSaved(deezerID):
         addAlbumEntry(deezerID, True)
     album = Album.objects.get(deezer_id=deezerID)
     album.saved = not album.saved
-    print(album.saved)
     album.save()
 
 def modifySongSaved(deezerID):
@@ -158,5 +157,4 @@ def modifySongSaved(deezerID):
     song = Song.objects.get(deezer_id=deezerID)
     song.saved = not song.saved
     song.save()
-        
 

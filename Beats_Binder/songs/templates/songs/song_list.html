@@ -30,6 +30,10 @@
                     <td>{{ song.preview }}</td>
                     <td>{{ song.duration }}</td>
                     {% endwith %}{% endwith %}
+                    <td><form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
+                    </form> {{ song.saved }} </td>
                 </tr>
             {% endfor %}
         </tbody>

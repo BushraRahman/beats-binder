@@ -18,7 +18,11 @@
             {% for artist in object_list %}
             {% with "http://127.0.0.1:8000/artists/"|concatenate:artist.pk as url %}
               {% with url|returnLink:artist.name as link %}
-              <li class="list-group-item list-group-item-dark">{{ link|safe }}</li>
+              <li class="list-group-item list-group-item-dark">{{ link|safe }}
+              <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ artist.deezer_id }}>UNSAVE</button>
+                    </form> {{ artist.saved }} </li>
               {% endwith %}{% endwith %}
             {% endfor %}
           </ul>

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Artist
 from .search_form import SearchForm
+from home.views import modifyArtistSaved
 # Create your views here.
 
 # class ArtistListView(ListView):
@@ -45,12 +46,13 @@ def searchAPI(search_input):
 
 def ArtistList(request):
 	object_list = Artist.objects.all()
-	print(object_list)
 	#print(list(request.POST.keys())[1])
 	if request.method == 'POST':
-		modifyAlbumSaved(list(request.POST.keys())[1])
+		modifyArtistSaved(list(request.POST.keys())[1])
 	return render(request, "artists/artist_list.html", context={"object_list": object_list})
 
 def ArtistDetails(request, pk):
 	artist = Artist.objects.get(pk=pk)
+	if request.method == 'POST':
+		modifyArtistSaved(list(request.POST.keys())[1])
 	return render(request, "artists/artist_detail.html", context={"artist": artist})
