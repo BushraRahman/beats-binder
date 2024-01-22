@@ -5,7 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Song
-from .search_form import SearchForm
+from .song_search_form import SongSearchForm
+import requests
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ class SongListView(ListView):
     model = Song
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['search_form'] = SearchForm
+        context['song_search_form'] = SongSearchForm
         return context
 
 class SongDetailView(DetailView):
@@ -21,20 +22,20 @@ class SongDetailView(DetailView):
 	
 def search_results_view(request):
     if request.method == "GET":
-        form = SearchForm(request.GET)
+        form = SongSearchForm(request.GET)
         if form.is_valid():
             search_input = form.cleaned_data["Search"]
             search_result = searchAPI(search_input)
-            return render(request, "songs/search_results.html", context={"search_result": search_result["data"],
+            return render(request, "songs/song_search_results.html", context={"search_result": search_result["data"],
                                                                          "search_input": search_input,
                                                                          "search_form": form})
     else: 
-        form = SearchForm()
-    return render(request, "songs/search_results.html", 
-            context={'search_form': SearchForm})
+        form = SongSearchForm()
+    return render(request, "songs/song_search_results.html", 
+            context={'search_form': SongSearchForm})
     
 def searchAPI(search_input):
-    url = "https://deezerdevs-deezer.p.rapidapi.com/search/track"
+    url = "https://deezerdevs-deezer.p.rapidapi.com/search"
     querystring = {"q": search_input}
     headers = {
         "X-RapidAPI-Key": "de8f6f2a3fmsh850207b34ede80bp17e3d8jsnd9883430d914",
