@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load home_extras %}
 
 
 <head>
@@ -24,9 +25,16 @@
             {% if song.saved %}
                 <tr>
                     <td>{{ song.deezer_id }}</td>
-                    <td>{{ song.name }}</td>
+                    {% with "http://127.0.0.1:8000/songs/"|concatenate:song.pk as url %}
+              {% with url|returnLink:song.name as link %}
+                    <td>{{ link|safe }}</td> {# link|safe is the name of the song btw #}
                     <td>{{ song.preview }}</td>
                     <td>{{ song.duration }}</td>
+                    {% endwith %}{% endwith %}
+                    <td><form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
+                    </form> {{ song.saved }} </td>
                 </tr>
             {% endif %}
             {% endfor %}
