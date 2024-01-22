@@ -23,12 +23,12 @@ def search_results_view(request):
             search_result = searchAPI(search_input)
             return render(request, "albums/album_search_results.html", context={"search_result": search_result["data"],
 																				"search_input": search_input,
-																				"search_form": form})
+																				"album_search_form": form})
         if request.method == 'POST':
             modifyAlbumSaved(list(request.POST.keys())[1])
     else: 
         form = AlbumSearchForm()
-    return render(request, "albums/album_search_results.html", context={'search_form': AlbumSearchForm})
+    return render(request, "albums/album_search_results.html", context={'album_search_form': AlbumSearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
@@ -47,10 +47,10 @@ def AlbumList(request):
 	#print(list(request.POST.keys())[1])
 	if request.method == 'POST':
 		modifyAlbumSaved(list(request.POST.keys())[1])
-	return render(request, "albums/album_list.html", context={"object_list": object_list})
+	return render(request, "albums/album_list.html", context={"object_list": object_list, 'album_search_form': AlbumSearchForm})
 
 def AlbumDetails(request, pk):
 	album = Album.objects.get(pk=pk)
 	if request.method == 'POST':
 		modifyAlbumSaved(list(request.POST.keys())[1])
-	return render(request, "albums/album_detail.html", context={"album": album})
+	return render(request, "albums/album_detail.html", context={"album": album, 'album_search_form': AlbumSearchForm})

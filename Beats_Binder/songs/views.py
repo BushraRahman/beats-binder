@@ -23,11 +23,11 @@ def search_results_view(request):
             search_result = searchAPI(search_input)
             return render(request, "songs/song_search_results.html", context={"search_result": search_result["data"],
                                                                          "search_input": search_input,
-                                                                         "search_form": form})
+                                                                          "song_search_form": form})
     else: 
         form = SongSearchForm()
     return render(request, "songs/song_search_results.html", 
-            context={'search_form': SongSearchForm})
+            context={'song_search_form': SongSearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
@@ -46,10 +46,10 @@ def SongList(request):
 	#print(list(request.POST.keys())[1])
 	if request.method == 'POST':
 		modifySongSaved(list(request.POST.keys())[1])
-	return render(request, "songs/song_list.html", context={"object_list": object_list})
+	return render(request, "songs/song_list.html", context={"object_list": object_list,  "song_search_form": SongSearchForm})
 
 def SongDetails(request, pk):
 	artist = Song.objects.get(pk=pk)
 	if request.method == 'POST':
 		modifySongSaved(list(request.POST.keys())[1])
-	return render(request, "songs/song_detail.html", context={"song": artist})
+	return render(request, "songs/song_detail.html", context={"song": artist,  "song_search_form": SongSearchForm})
