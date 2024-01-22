@@ -4,7 +4,7 @@
 {% block search %} 
 <form class="form-inline my-2 my-lg-0" action="songs/song_search_results" method="get">
     {% csrf_token %}
-    {{search_form.as_p}}
+    {{song_search_form.as_p}}
 </form>
 {% endblock search %}
 
@@ -15,39 +15,32 @@
 </head>
 <body>
     {% block content%}
-    <h1>Song Data</h1>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Deezer ID</th>
-                <th>Title</th>
-                <th>Preview</th>
-                <th>Song Duration</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for song in object_list %}
-            {% if song.saved %}
-                <tr>
-                    <td>{{ song.deezer_id }}</td>
-                    {% with "http://127.0.0.1:8000/songs/"|concatenate:song.pk as url %}
-              {% with url|returnLink:song.name as link %}
-                    <td>{{ link|safe }}</td> {# link|safe is the name of the song btw #}
-                    <td>{{ song.preview }}</td>
-                    <td>{{ song.duration }}</td>
-                    {% endwith %}{% endwith %}
-                    <td><form method="post">
-                    {% csrf_token %}
-                    <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
-                    </form> {{ song.saved }} </td>
-                </tr>
-            {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endblock content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+              <h1>Songs</h1>
+              <ul class="list-group">
+                {% for song in object_list %}
+                {% if song.saved %}
+                  {% with "http://127.0.0.1:8000/songs/"|concatenate:song.pk as url %}
+                  {% with url|returnLink:song.name as link %}
+                  <li class="list-group-item list-group-item-dark">{{ link|safe }}
+                      <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
+                        </form> {{ song.saved }} </li>
+              {% endwith %}{% endwith %}
+                {% endif %}
+                {% endfor %}
+              </ul>
+              {% endblock content %}
+          </div>
+        </div>
+        </div>
+      </div>
 </body>
+
+
 
 
 

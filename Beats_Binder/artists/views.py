@@ -28,11 +28,11 @@ def search_results_view(request):
             search_result = searchAPI(search_input)
             return render(request, "artists/artist_search_results.html", context={"search_result": search_result["data"],
                                                                         	"search_input": search_input,
-                                                                            "search_form": form})
+                                                                            "artist_search_form": form})
     else: 
         form = ArtistSearchForm()
     return render(request, "artists/artist_search_results.html", 
-            context={'search_form': ArtistSearchForm})
+            context={ "artist_search_form": ArtistSearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
@@ -50,10 +50,10 @@ def ArtistList(request):
 	#print(list(request.POST.keys())[1])
 	if request.method == 'POST':
 		modifyArtistSaved(list(request.POST.keys())[1])
-	return render(request, "artists/artist_list.html", context={"object_list": object_list})
+	return render(request, "artists/artist_list.html", context={"object_list": object_list,  "artist_search_form": ArtistSearchForm})
 
 def ArtistDetails(request, pk):
 	artist = Artist.objects.get(pk=pk)
 	if request.method == 'POST':
 		modifyArtistSaved(list(request.POST.keys())[1])
-	return render(request, "artists/artist_detail.html", context={"artist": artist})
+	return render(request, "artists/artist_detail.html", context={"artist": artist,  "artist_search_form": ArtistSearchForm})
