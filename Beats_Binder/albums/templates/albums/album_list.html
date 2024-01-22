@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load home_extras %}
 
 {% block search %}
     <form action="search_results" method="get">
@@ -15,9 +16,13 @@
           <h1>Albums</h1>
           <ul class="list-group">
             {% for album in object_list %}
-              <li class="list-group-item list-group-item-dark">{{ album.name }}</li>
+              {% with "http://127.0.0.1:8000/albums/"|concatenate:album.pk as url %}
+              {% with url|returnLink:album.name as link %}
+              <li class="list-group-item list-group-item-dark">{{ link|safe }}</li>
+          {% endwith %}{% endwith %}
             {% endfor %}
           </ul>
+          <a href="url">link text</a>
         {% endblock content %}
       </div>
     </div>
