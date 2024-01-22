@@ -26,7 +26,7 @@ def search_results_view(request):
             search_result = searchAPI(search_input)
             return render(request, "artists/search_results.html", context={"search_result": search_result["data"],
                                                                         	"search_input": search_input,
-                                                                            "search_form": form})
+                                                               "search_form": form})
     else: 
         form = SearchForm()
     return render(request, "artists/search_results.html", 

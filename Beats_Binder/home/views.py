@@ -26,34 +26,6 @@ def home_view(request):
     tracks_data = open(absolute_path + '/json/top_tracks.json')
     top_tracks = json.load(tracks_data)
     tracks_data.close()
-
-    if request.method == 'POST' and 'run_script' in request.POST:
-        print(request.POST)
-        addArtistEntry(1,True)
-        addArtistEntry(14754433,True)
-        addArtistEntry(12246,True)
-        addAlbumEntry(447279465,True)
-        addAlbumEntry(302068167,True)
-        addAlbumEntry(317522947,True)
-        addAlbumEntry(10164620,True)
-        addAlbumEntry(97412692,True)
-        addAlbumEntry(106875912,True)
-        addAlbumEntry(106710782,True)
-        addSongEntry(2303246265,True)
-        addSongEntry(2303246275,True)
-        addSongEntry(2303246285,True)
-        addSongEntry(2303246295,True)
-        addSongEntry(2303246305,True)
-        addSongEntry(89077521,True)
-        addSongEntry(1682413517,True)
-        addSongEntry(629561092,True)
-        addSongEntry(4601933,True)
-        addSongEntry(2603558,True)
-        modifyAlbumSaved(447279465,True)
-        modifyArtistSaved(14754433,False)
-        modifySongSaved(2303246265,True)
-        addAlbumEntry(106871722,False)
-
     return render(request, 'home/home.html', 
                   context={'top_artists': top_artists,
                           'top_albums': top_albums,
