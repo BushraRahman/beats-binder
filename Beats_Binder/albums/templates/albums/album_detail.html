@@ -14,17 +14,21 @@
 <link rel="stylesheet" href="{% static 'albums/albums.css' %}">
     </head>
     </html>
-<div class="container mt-4">
-    <h1 class="mb-4">Name: {{ object.name }}</h1>
-    <h1 class="mb-4">Artist's Name: {{ object.artist }}</h1>
-    <h1 class="mb-4">Contributors: {{ object.contributors }}</h1>
+<div class="container mt-4 custom-container">
+    <h1 class="mb-4">Name: {{ album.name }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ album.artist.all.0.name }}</h1>
+    <h1 class="mb-4">Contributors: {{ album.contributors }}</h1>
     <div class="mb-4">
-        <img src="{{ object.cover }}" alt="image" class="img-fluid" width="200" height="200">
+        <img src="{{ album.cover }}" alt="image" class="img-fluid" width="200" height="200">
     </div>
-    <h1 class="mb-4">Genre: {{ object.genre }}</h1>
-    <h1 class="mb-4">Number of Tracks: {{ object.nb_tracks }}</h1>
-    <h1 class="mb-4">Duration: {{ object.duration }} seconds</h1>
-    <h1 class="mb-4">Release Date: {{ object.release_date }}</h1>
-    <h1 class="mb-4">Record Type: {{ object.record_type }}</h1>
+    <h1 class="mb-4">Genre: {{ album.genre }}</h1>
+    <h1 class="mb-4">Number of Tracks: {{ album.nb_tracks }}</h1>
+    <h1 class="mb-4">Duration: {{ album.duration }} seconds</h1>
+    <h1 class="mb-4">Release Date: {{ album.release_date }}</h1>
+    <h1 class="mb-4">Record Type: {{ album.record_type }}</h1>
+    <h1 class="mb-4"><form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ album.deezer_id }}>UNSAVE</button>
+                    </form> {{ album.saved }} </h1>
 </div>
 {% endblock content %}

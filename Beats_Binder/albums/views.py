@@ -11,15 +11,19 @@ import requests
 
 # Create your views here.
 
-class AlbumListView(ListView):
-    model = Album
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['album_search_form'] = AlbumSearchForm
-        return context
+# class AlbumListView(ListView):
+#     model = Album
+#     # if request.method == 'POST':
+#     # 	print("Yas?")
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['search_form'] = SearchForm
+#         return context
 
-class AlbumDetailView(DetailView):
-	model = Album
+# class AlbumDetailView(DetailView):
+# 	model = Album
+# 	#print(util.get_entry(f"{pk}"))
+# 		#modifyAlbumSaved(list(request.POST.keys())[1])
 
 def search_results_view(request):
 	if request.method == "GET":
@@ -30,6 +34,8 @@ def search_results_view(request):
 			return render(request, "albums/album_search_results.html", context={"search_result": search_result["data"],
 				"search_input": search_input,
 				"search_form": form})
+	if request.method == 'POST':
+		modifyAlbumSaved(list(request.POST.keys())[1])
 	else: 
 		form = AlbumSearchForm()
 	return render(request, "albums/album_search_results.html", context={'search_form': AlbumSearchForm})
@@ -44,3 +50,17 @@ def searchAPI(search_input):
     response = requests.get(url, headers=headers, params=querystring)
     search_results = response.json()
     return search_results
+
+def AlbumList(request):
+	object_list = Album.objects.all()
+	print(object_list)
+	#print(list(request.POST.keys())[1])
+	if request.method == 'POST':
+		modifyAlbumSaved(list(request.POST.keys())[1])
+	return render(request, "albums/album_list.html", context={"object_list": object_list})
+
+def AlbumDetails(request, pk):
+	album = Album.objects.get(pk=pk)
+	if request.method == 'POST':
+		modifyAlbumSaved(list(request.POST.keys())[1])
+	return render(request, "albums/album_detail.html", context={"album": album})

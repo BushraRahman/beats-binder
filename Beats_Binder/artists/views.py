@@ -17,8 +17,8 @@ class ArtistListView(ListView):
         context['artist_search_form'] = ArtistSearchForm
         return context
 
-class ArtistDetailView(DetailView):
-	model = Artist
+# class ArtistDetailView(DetailView):
+# 	model = Artist
 	
 def search_results_view(request):
     if request.method == "GET":
@@ -44,3 +44,16 @@ def searchAPI(search_input):
     response = requests.get(url, headers=headers, params=querystring)
     search_results = response.json()
     return search_results
+
+def ArtistList(request):
+	object_list = Artist.objects.all()
+	#print(list(request.POST.keys())[1])
+	if request.method == 'POST':
+		modifyArtistSaved(list(request.POST.keys())[1])
+	return render(request, "artists/artist_list.html", context={"object_list": object_list})
+
+def ArtistDetails(request, pk):
+	artist = Artist.objects.get(pk=pk)
+	if request.method == 'POST':
+		modifyArtistSaved(list(request.POST.keys())[1])
+	return render(request, "artists/artist_detail.html", context={"artist": artist})

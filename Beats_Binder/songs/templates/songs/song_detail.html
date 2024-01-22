@@ -9,22 +9,24 @@
 {% endblock search %}
 
 {% block content %}
-<!DOCTYPE html>
-    <html lang="en">
+    <html>
     <head>
         <link rel="stylesheet" href="{% static 'songs/songs.css' %}">
     </head>
-<div class="container mt-4">
-    <h1 class="mb-4">Song Name: {{ object.name }}</h1>
-    <h1 class="mb-4">Artist's Name: {{ object.artist }}</h1>
-    <h1 class="mb-4">Contributors: {{ object.contributors }}</h1>
-    <h1 class="mb-4">Album Name: {{ object.album }}</h1>
-    <h1 class="mb-4">Duration: {{ object.duration }} seconds</h1>
+<div class="container mt-4 custom-container">
+    <h1 class="mb-4">Song Name: {{ song.name }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ song.artist }}</h1>
+    <h1 class="mb-4">Contributors: {{ song.contributors }}</h1>
+    <h1 class="mb-4">Album Name: {{ song.album }}</h1>
+    <h1 class="mb-4">Duration: {{ song.duration }} seconds</h1>
     <h1 class="mb-4">Preview:</h1>
     <audio controls class="mb-4">
-        <source src="{{ object.preview }}" type="audio/mpeg">
+        <source src="{{ song.preview }}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <h1 class="mb-4"><form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
+                    </form> {{ song.saved }}</h1>
 </div>
-</html>
 {% endblock content %}
