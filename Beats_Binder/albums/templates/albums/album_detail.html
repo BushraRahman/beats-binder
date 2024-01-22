@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block search %} 
+<form class="form-inline my-2 my-lg-0" action="albums/album_search_results" method="get">
+    {% csrf_token %}
+    {{album_search_form.as_p}}
+</form>
+{% endblock search %}
+
 {% block content %}
 <html>
     <head>
 <link rel="stylesheet" href="{% static 'albums/albums.css' %}">
     </head>
     </html>
-<div class="container mt-4">
+<div class="container mt-4 custom-container">
     <h1 class="mb-4">Name: {{ album.name }}</h1>
     <h1 class="mb-4">Artist's Name: {{ album.artist.all.0.name }}</h1>
         {% if song.contributors.all.0 %}

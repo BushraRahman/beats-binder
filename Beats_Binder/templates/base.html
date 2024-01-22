@@ -15,7 +15,7 @@
 <body>
     <div class="title md:col-sm lg:col-md"> <h1 class="display-2"><a href="/" class = "link-body-emphasis">Beats Binder</a> </h1></div>
     <div class="d-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-lg bg-transparent navbar-light bg-light sticky-top" style="background-color: #e3f2fd;">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item px-5">
@@ -32,15 +32,12 @@
             </div>
           </nav>
         </div>
-        <div class="d-flex justify-content-center">
-            <form class="form-inline my-2 my-lg-0" action="search_results" method="get">
-            {% csrf_token %}
-            {{search_form.as_p}}
-          </form>
+        <div class="d-flex justify-content-center py-2">
+            {% block search %}
+            {% endblock search %}
+            <div id="theme" class="px-3"><button class="btn btn-primary d-flex align-items-center" type="button" onclick="themeToggle()">Theme Toggle</button></div>
         </div>
           </body>
-          <button type="button" onclick="themeToggle()">Theme Toggle</button>
-          <div id="theme"></div>
     {% block content %}
     {% endblock content %}
     
