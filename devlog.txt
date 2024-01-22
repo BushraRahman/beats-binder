@@ -198,11 +198,28 @@ Debugged search endpoint; turns out RapidAPI’s Deezer API limits its search en
 -------------------------------------------------
 
 2024-01-21
-HuiWenW — 2024-01-21 | 21:31, 22:35, 22:44
+HuiWenW — 2024-01-21 | 21:31, 22:35
 Researched importing a model from another app
 General search bar component clean up
+
+SadatA — 2024-01-21 | 22:19
+Added bootstrap and css to detail views 
+
+ZidanniC — 2024-01-19 | 14:20
+Bootstrapped album and artist list views.
+Fixed dark mode navbar configuration
+
+-------------------------------------------------
+
+2024-01-22
+SadatA — 2024-01-22 | 14:50
+Edited list views to only show data if data is saved 
+Fixed the css for each of the detail views 
+
+HuiWenW — 2024-01-22 | 14:50, 15:04, 15:10, 15:23
+Debugged search bar again, now showing up separately for each app but for all pages
+Bootstrapped the dark mode button
+Bootstrapped songs inventory list, now consistent with the styles of the other apps
 Updated devlog.txt
 
-SadatA — 2024-01-21 |
-Added bootstrap and css to detail views 
 
