@@ -8,15 +8,15 @@ from .models import Artist
 from .search_form import SearchForm
 # Create your views here.
 
-class ArtistListView(ListView):
-    model = Artist
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['search_form'] = SearchForm
-        return context
+# class ArtistListView(ListView):
+#     model = Artist
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['search_form'] = SearchForm
+#         return context
 
-class ArtistDetailView(DetailView):
-	model = Artist
+# class ArtistDetailView(DetailView):
+# 	model = Artist
 	
 def search_results_view(request):
     if request.method == "GET":
@@ -42,3 +42,15 @@ def searchAPI(search_input):
     response = requests.get(url, headers=headers, params=querystring)
     search_results = response.json()
     return search_results
+
+def ArtistList(request):
+	object_list = Artist.objects.all()
+	print(object_list)
+	#print(list(request.POST.keys())[1])
+	if request.method == 'POST':
+		modifyAlbumSaved(list(request.POST.keys())[1])
+	return render(request, "artists/artist_list.html", context={"object_list": object_list})
+
+def ArtistDetails(request, pk):
+	artist = Artist.objects.get(pk=pk)
+	return render(request, "artists/artist_detail.html", context={"artist": artist})

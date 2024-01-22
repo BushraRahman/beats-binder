@@ -20,10 +20,10 @@ import requests
 #         context['search_form'] = SearchForm
 #         return context
 
-class AlbumDetailView(DetailView):
-	model = Album
-	#print(util.get_entry(f"{pk}"))
-		#modifyAlbumSaved(list(request.POST.keys())[1])
+# class AlbumDetailView(DetailView):
+# 	model = Album
+# 	#print(util.get_entry(f"{pk}"))
+# 		#modifyAlbumSaved(list(request.POST.keys())[1])
 
 def search_results_view(request):
 	if request.method == "GET":
@@ -59,5 +59,6 @@ def AlbumList(request):
 		modifyAlbumSaved(list(request.POST.keys())[1])
 	return render(request, "albums/album_list.html", context={"object_list": object_list})
 
-# def AlbumDetails(request, pk):
-# 	album = Album.objects.all().filter(pk=pk)
+def AlbumDetails(request, pk):
+	album = Album.objects.get(pk=pk)
+	return render(request, "albums/album_detail.html", context={"album": album})
