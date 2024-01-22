@@ -198,9 +198,10 @@ Debugged search endpoint; turns out RapidAPI’s Deezer API limits its search en
 -------------------------------------------------
 
 2024-01-21
-HuiWenW — 2024-01-21 | 21:31, 22:35
+HuiWenW — 2024-01-21 | 21:31, 22:35, 22:44
 Researched importing a model from another app
 General search bar component clean up
+Updated devlog.txt
 
 SadatA — 2024-01-21 |
 Added bootstrap and css to detail views 
