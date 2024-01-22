@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Album
 from .album_search_form import AlbumSearchForm
-from home.views import saveAlbum
+from home.views import saveAlbum, modifyAlbumSaved
 import requests
 
 # Create your views here.
@@ -26,7 +26,6 @@ def search_results_view(request):
 																				"album_search_form": form})
     if request.method == 'POST':
        saveAlbum(list(request.POST.keys())[1])
-       print("..?")
     else: 
         form = AlbumSearchForm()
     return render(request, "albums/album_search_results.html", context={'album_search_form': AlbumSearchForm})

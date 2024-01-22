@@ -7,6 +7,7 @@ from django.contrib import messages
 from .models import Song
 from .song_search_form import SongSearchForm
 import requests
+from home.views import saveSong, modifySongSaved
 
 # Create your views here.
 	
@@ -24,6 +25,8 @@ def search_results_view(request):
             return render(request, "songs/song_search_results.html", context={"search_result": search_result["data"],
                                                                          "search_input": search_input,
                                                                           "song_search_form": form})
+    if request.method == 'POST':
+       saveSong(list(request.POST.keys())[1])
     else: 
         form = SongSearchForm()
     return render(request, "songs/song_search_results.html", 

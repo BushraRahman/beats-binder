@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Artist
 from .artist_search_form import ArtistSearchForm
+from home.views import saveArtist, modifyArtistSaved
 import requests
 
 # Create your views here.
@@ -29,6 +30,8 @@ def search_results_view(request):
             return render(request, "artists/artist_search_results.html", context={"search_result": search_result["data"],
                                                                         	"search_input": search_input,
                                                                             "artist_search_form": form})
+    if request.method == 'POST':
+       saveArtist(list(request.POST.keys())[1])
     else: 
         form = ArtistSearchForm()
     return render(request, "artists/artist_search_results.html", 
