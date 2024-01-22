@@ -156,6 +156,7 @@ def modifyAlbumSaved(deezerID):
         album = Album.objects.get(deezer_id=deezerID)
         album.saved = not album.saved
         album.save()
+        print(album.saved)
 
 def modifySongSaved(deezerID):
     if not Song.objects.filter(deezer_id=deezerID).exists():
@@ -164,7 +165,6 @@ def modifySongSaved(deezerID):
         song = Song.objects.get(deezer_id=deezerID)
         song.saved = not song.saved
         song.save()
-        print(song.saved)
 
 def saveArtist(deezerID):
     if not Artist.objects.filter(deezer_id=deezerID).exists():
