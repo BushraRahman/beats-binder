@@ -28,7 +28,8 @@
                       <form method="post">
                         {% csrf_token %}
                         <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
-                        </form> {{ song.saved }} </li>
+                        </form> 
+                        {% comment %} {{ song.saved }} </li> {% endcomment %}
               {% endwith %}{% endwith %}
                 {% endif %}
                 {% endfor %}
