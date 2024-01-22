@@ -1,13 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block search %} 
-<form action="albums/album_search_results" method="get">
-    {% csrf_token %}
-    {{album_search_form.as_p}}
-</form>
-{% endblock search %}
-
 {% block content%}
 <html>
 

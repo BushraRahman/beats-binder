@@ -17,6 +17,7 @@ td {
     padding: 1%;
 } 
 
+
 @media (max-width: 768px) {
     .charts {
         flex-direction: column;
