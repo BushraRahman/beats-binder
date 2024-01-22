@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_extras %}
 
 {% block search %}
     <form action="search_results" method="get">
@@ -32,8 +33,14 @@
                 <td> 
                     <form method="post">
                     {% csrf_token %}
-                    <button type="submit" name={{ result }}>Click Me! :D</button>
-                    </form> 
+                    {% with albumID=result.album.id %}
+                    {% with result.artist.id as artistID %}
+                    {% with result.id as trackID %}
+                    {% with trackID|concatenate:" "|concatenate:artistID|concatenate:" "|concatenate:albumID as ids %}
+                    {% with ids|returnHomeButton:"SAVE" as homeButton %}
+                    {{ homeButton|safe }}
+                    </form>
+                    {% endwith %} {% endwith %} {% endwith %} {% endwith %} {% endwith %} 
                 </td>
             <tr>
             {% endfor %}

@@ -74,7 +74,11 @@ def search_results_view(request):
     if request.method == 'POST':
         print(list(request.POST.keys()))
         # modifyAlbumSaved(list(request.POST.keys())[1])
-        print("IS THIS DOING ANYTHING")
+        ids = list(request.POST.keys())[1].split(" ")
+        print(ids)
+        modifySongSaved(ids[0])
+        modifyArtistSaved(ids[1])
+        modifyAlbumSaved(ids[2])
     else: 
         form = SearchForm()
     return render(request, "home/search_results.html", 
@@ -113,10 +117,13 @@ def addAlbumEntry(deezerID,saved):
             "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
         }
         response = requests.get(url, headers=headers).json()
-        print(response)
+        #print(response)
         name = response["title"]
         cover = response["cover_medium"]
-        genre = response["genres"]["data"][0]["name"]
+        if(len(response["genres"]["data"]) > 0):
+            genre = response["genres"]["data"][0]["name"]
+        else:
+            genre = "NONE"
         nb_tracks = response["nb_tracks"]
         duration = response["duration"]
         release_date = response["release_date"]
@@ -170,6 +177,7 @@ def modifyAlbumSaved(deezerID):
         addAlbumEntry(deezerID, True)
     album = Album.objects.get(deezer_id=deezerID)
     album.saved = not album.saved
+    print(album.saved)
     album.save()
 
 def modifySongSaved(deezerID):
