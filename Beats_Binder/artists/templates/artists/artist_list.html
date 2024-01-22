@@ -2,7 +2,7 @@
 {% load home_extras %}
 
 {% block search %} 
-<form class="form-inline my-2 my-lg-0" action="artists/artist_search_results" method="get">
+<form action="artists/artist_search_results" method="get">
     {% csrf_token %}
     {{artist_search_form.as_p}}
 </form>

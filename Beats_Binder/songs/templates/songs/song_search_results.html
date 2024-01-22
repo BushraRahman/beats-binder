@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block search %} 
-<form class="form-inline my-2 my-lg-0" action="songs/song_search_results" method="get">
+<form action="songs/song_search_results" method="get">
     {% csrf_token %}
     {{song_search_form.as_p}}
 </form>
