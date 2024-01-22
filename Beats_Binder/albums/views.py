@@ -7,11 +7,14 @@ from django.contrib import messages
 from .models import Album
 from .search_form import SearchForm
 from home.views import modifyAlbumSaved
+import requests
 
 # Create your views here.
 
 class AlbumListView(ListView):
     model = Album
+    # if request.method == 'POST':
+    # 	print("Yas?")
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_form'] = SearchForm
@@ -19,6 +22,7 @@ class AlbumListView(ListView):
 
 class AlbumDetailView(DetailView):
 	model = Album
+		#modifyAlbumSaved(list(request.POST.keys())[1])
 
 def search_results_view(request):
 	if request.method == "GET":
@@ -30,9 +34,7 @@ def search_results_view(request):
 				"search_input": search_input,
 				"search_form": form})
 	if request.method == 'POST':
-		print(list(request.POST.keys())[1])
 		modifyAlbumSaved(list(request.POST.keys())[1])
-		print("IS THIS DOING ANYTHING")
 	else: 
 		form = SearchForm()
 	return render(request, "albums/search_results.html", context={'search_form': SearchForm})

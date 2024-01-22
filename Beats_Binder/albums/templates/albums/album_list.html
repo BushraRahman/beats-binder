@@ -18,11 +18,14 @@
             {% for album in object_list %}
               {% with "http://127.0.0.1:8000/albums/"|concatenate:album.pk as url %}
               {% with url|returnLink:album.name as link %}
-              <li class="list-group-item list-group-item-dark">{{ link|safe }}</li>
+              <li class="list-group-item list-group-item-dark">{{ link|safe }}
+              	<form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name={{ album.id }}>UNSAVE</button>
+                    </form> </li>
           {% endwith %}{% endwith %}
             {% endfor %}
           </ul>
-          <a href="url">link text</a>
         {% endblock content %}
       </div>
     </div>
