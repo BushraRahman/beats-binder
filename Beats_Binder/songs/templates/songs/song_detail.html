@@ -8,9 +8,11 @@
     </head>
 <div class="container mt-4">
     <h1 class="mb-4">Song Name: {{ song.name }}</h1>
-    <h1 class="mb-4">Artist's Name: {{ song.artist }}</h1>
-    <h1 class="mb-4">Contributors: {{ song.contributors }}</h1>
-    <h1 class="mb-4">Album Name: {{ song.album }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ song.artist.all.0.name }} </h1>
+    {% if song.contributors.all.0 %}
+    <h1 class="mb-4">Contributors: {{ song.contributors.all.0.name }}</h1>
+    {% endif %}
+    <h1 class="mb-4">Album Name: {{ song.album.all.0.name }}</h1>
     <h1 class="mb-4">Duration: {{ song.duration }} seconds</h1>
     <h1 class="mb-4">Preview:</h1>
     <audio controls class="mb-4">

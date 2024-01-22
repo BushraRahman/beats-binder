@@ -10,7 +10,9 @@
 <div class="container mt-4">
     <h1 class="mb-4">Name: {{ album.name }}</h1>
     <h1 class="mb-4">Artist's Name: {{ album.artist.all.0.name }}</h1>
-    <h1 class="mb-4">Contributors: {{ album.contributors }}</h1>
+        {% if song.contributors.all.0 %}
+    <h1 class="mb-4">Contributors: {{ song.contributors.all.0.name }}</h1>
+    {% endif %}
     <div class="mb-4">
         <img src="{{ album.cover }}" alt="image" class="img-fluid" width="200" height="200">
     </div>

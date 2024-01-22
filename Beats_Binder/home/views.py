@@ -157,4 +157,5 @@ def modifySongSaved(deezerID):
     song = Song.objects.get(deezer_id=deezerID)
     song.saved = not song.saved
     song.save()
+    print(song.saved)
 

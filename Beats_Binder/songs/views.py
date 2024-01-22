@@ -47,7 +47,6 @@ def searchAPI(search_input):
 
 def SongList(request):
 	object_list = Song.objects.all()
-	print(object_list)
 	#print(list(request.POST.keys())[1])
 	if request.method == 'POST':
 		modifySongSaved(list(request.POST.keys())[1])

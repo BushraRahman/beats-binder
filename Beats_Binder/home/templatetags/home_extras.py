@@ -1,5 +1,6 @@
 from django import template
 from django.utils.safestring import mark_safe
+from artists.models import Artist
 
 register = template.Library()
 
@@ -14,3 +15,7 @@ def returnHomeButton(name, text):
 @register.filter
 def returnLink(url,text):
     return "<a href='" + url + "'>" + text + "</a>"
+
+@register.filter
+def thisisSoBS(arg1,arg2):
+    print(Artist.objects.all())
