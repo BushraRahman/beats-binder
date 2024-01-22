@@ -9,18 +9,13 @@ from .song_search_form import SongSearchForm
 import requests
 
 # Create your views here.
-
-class SongListView(ListView):
-    model = Song
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['song_search_form'] = SongSearchForm
-        return context
-
-class SongDetailView(DetailView):
-	model = Song
 	
 def search_results_view(request):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(self, **kwargs)
+        context = super().get_context_data(**kwargs)
+        context["song_search_form"] = SongSearchForm
+        return context
     if request.method == "GET":
         form = SongSearchForm(request.GET)
         if form.is_valid():
