@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block search %} 
+<form class="form-inline my-2 my-lg-0" action="songs/song_search_results" method="get">
+    {% csrf_token %}
+    {{search_form.as_p}}
+</form>
+{% endblock search %}
+
+{% block content%}
+<html>
+
+    <head>
+        <link rel="stylesheet" href="{% static 'global.css' %}">
+        <title>Search Results Page</title>
+    </head>
+
+    <body>
+        <h1>Songs Inventory</h1>
+        <h3>Results for: {{search_input}}</h3>
+        <table>
+            <tr>
+                <th>Track Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+            </tr>
+            {% for result in search_result %}
+            <tr>
+                <td>{{result.title}}</td>
+                <td>{{result.artist.name}}</td>
+                <td>{{result.album.title}}</td>
+                <td> 
+            <tr>
+            {% endfor %}
+        </table>
+    </body>
+
+    <script src="{% static 'global.js' %}"></script>
+</html>
+{% endblock content %}
