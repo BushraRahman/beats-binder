@@ -48,10 +48,8 @@ def search_results_view(request):
                                                                         "search_input": search_input,
                                                                         "search_form": form})
     if request.method == 'POST':
-        print(list(request.POST.keys()))
         # modifyAlbumSaved(list(request.POST.keys())[1])
         ids = list(request.POST.keys())[1].split(" ")
-        print(ids)
         saveSong(ids[0])
         saveArtist(ids[1])
         saveAlbum(ids[2])
@@ -108,7 +106,6 @@ def addAlbumEntry(deezerID,saved):
         if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
             addArtistEntry(response["artist"]["id"],False)
         album.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
-        print(response["contributors"][0]["id"])
         if (len(response["contributors"]) > 1):
             for i in range(1, len(response["contributors"])-1):
                 if not Artist.objects.filter(deezer_id = response["contributors"][i]["id"]).exists():
@@ -177,10 +174,13 @@ def saveArtist(deezerID):
 def saveAlbum(deezerID):
     if not Album.objects.filter(deezer_id=deezerID).exists():
         addAlbumEntry(deezerID, True)
+        print("save is ONE")
     else:
         album = Album.objects.get(deezer_id=deezerID)
+        print(album)
         album.saved = True
         album.save()
+        print("save is TWO")
 
 def saveSong(deezerID):
     if not Song.objects.filter(deezer_id=deezerID).exists():
