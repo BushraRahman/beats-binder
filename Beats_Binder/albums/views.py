@@ -11,34 +11,24 @@ import requests
 
 # Create your views here.
 
-# class AlbumListView(ListView):
-#     model = Album
-#     # if request.method == 'POST':
-#     # 	print("Yas?")
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['search_form'] = SearchForm
-#         return context
-
-# class AlbumDetailView(DetailView):
-# 	model = Album
-# 	#print(util.get_entry(f"{pk}"))
-# 		#modifyAlbumSaved(list(request.POST.keys())[1])
-
 def search_results_view(request):
-	if request.method == "GET":
-		form = AlbumSearchForm(request.GET)
-		if form.is_valid():
-			search_input = form.cleaned_data["Search"]
-			search_result = searchAPI(search_input)
-			return render(request, "albums/album_search_results.html", context={"search_result": search_result["data"],
-				"search_input": search_input,
-				"search_form": form})
-	if request.method == 'POST':
-		modifyAlbumSaved(list(request.POST.keys())[1])
-	else: 
-		form = AlbumSearchForm()
-	return render(request, "albums/album_search_results.html", context={'search_form': AlbumSearchForm})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['album_search_form'] = AlbumSearchForm
+        return context
+    if request.method == "GET":
+        form = AlbumSearchForm(request.GET)
+        if form.is_valid():
+            search_input = form.cleaned_data["Search"]
+            search_result = searchAPI(search_input)
+            return render(request, "albums/album_search_results.html", context={"search_result": search_result["data"],
+																				"search_input": search_input,
+																				"search_form": form})
+        if request.method == 'POST':
+            modifyAlbumSaved(list(request.POST.keys())[1])
+    else: 
+        form = AlbumSearchForm()
+    return render(request, "albums/album_search_results.html", context={'search_form': AlbumSearchForm})
     
 def searchAPI(search_input):
     url = "https://deezerdevs-deezer.p.rapidapi.com/search"
