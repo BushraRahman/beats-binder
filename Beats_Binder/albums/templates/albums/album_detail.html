@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% block search %}
-    <form action="search_results" method="get">
-        {% csrf_token %}
-        {{search_form.as_p}}
-    </form>
-{% endblock search %}
 
 {% block content %}
 <html>

@@ -1,14 +1,6 @@
 {% extends 'base.html' %}
 
 
-{% block search %}
-    <form action="search_results" method="get">
-        {% csrf_token %}
-        {{search_form.as_p}}
-    </form>
-{% endblock search %}
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
