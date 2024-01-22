@@ -48,9 +48,9 @@ def search_results_view(request):
         # modifyAlbumSaved(list(request.POST.keys())[1])
         ids = list(request.POST.keys())[1].split(" ")
         print(ids)
-        modifySongSaved(ids[0])
-        modifyArtistSaved(ids[1])
-        modifyAlbumSaved(ids[2])
+        saveSong(ids[0])
+        saveArtist(ids[1])
+        saveAlbum(ids[2])
     else: 
         form = SearchForm()
     return render(request, "home/search_results.html", 
@@ -69,7 +69,6 @@ def searchAPI(search_input):
 
 def addArtistEntry(deezerID, saved):
     if not Artist.objects.filter(deezer_id=deezerID).exists():
-        print(" PSRT 3")
         url = "https://deezerdevs-deezer.p.rapidapi.com/artist/" + str(deezerID)
         headers = {
         "X-RapidAPI-Key": "dc2e72cb1cmsh271df14842a824bp190aaajsnf4720429b177",
@@ -120,6 +119,7 @@ def addSongEntry(deezerID, saved):
         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com"
         }
         response = requests.get(url, headers=headers).json()
+        print(response)
         name = response["title"]
         duration = response["duration"]
         preview = response["preview"]
@@ -140,22 +140,49 @@ def addSongEntry(deezerID, saved):
 def modifyArtistSaved(deezerID):
     if not Artist.objects.filter(deezer_id=deezerID).exists():
         addArtistEntry(deezerID, True)
-    artist = Artist.objects.get(deezer_id=deezerID)
-    artist.saved = not artist.saved
-    artist.save()
+    else:
+        artist = Artist.objects.get(deezer_id=deezerID)
+        artist.saved = not artist.saved
+        artist.save()
 
 def modifyAlbumSaved(deezerID):
     if not Album.objects.filter(deezer_id=deezerID).exists():
         addAlbumEntry(deezerID, True)
-    album = Album.objects.get(deezer_id=deezerID)
-    album.saved = not album.saved
-    album.save()
+    else:
+        album = Album.objects.get(deezer_id=deezerID)
+        album.saved = not album.saved
+        album.save()
 
 def modifySongSaved(deezerID):
     if not Song.objects.filter(deezer_id=deezerID).exists():
         addSongEntry(deezerID, True)
-    song = Song.objects.get(deezer_id=deezerID)
-    song.saved = not song.saved
-    song.save()
-    print(song.saved)
+    else:
+        song = Song.objects.get(deezer_id=deezerID)
+        song.saved = not song.saved
+        song.save()
+        print(song.saved)
+
+def saveArtist(deezerID):
+    if not Artist.objects.filter(deezer_id=deezerID).exists():
+        addArtistEntry(deezerID, True)
+    else:
+        artist = Artist.objects.get(deezer_id=deezerID)
+        artist.saved = True
+        artist.save()
+
+def saveAlbum(deezerID):
+    if not Album.objects.filter(deezer_id=deezerID).exists():
+        addAlbumEntry(deezerID, True)
+    else:
+        album = Album.objects.get(deezer_id=deezerID)
+        album.saved = True
+        album.save()
+
+def saveSong(deezerID):
+    if not Song.objects.filter(deezer_id=deezerID).exists():
+        addSongEntry(deezerID, True)
+    else:
+        song = Song.objects.get(deezer_id=deezerID)
+        song.saved = True
+        song.save()
 

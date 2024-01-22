@@ -53,7 +53,7 @@ def SongList(request):
 	return render(request, "songs/song_list.html", context={"object_list": object_list})
 
 def SongDetails(request, pk):
-	artist = Song.objects.get(pk=pk)
+	song = Song.objects.get(pk=pk)
 	if request.method == 'POST':
 		modifySongSaved(list(request.POST.keys())[1])
-	return render(request, "songs/song_detail.html", context={"song": artist})
+	return render(request, "songs/song_detail.html", context={"song": song})
