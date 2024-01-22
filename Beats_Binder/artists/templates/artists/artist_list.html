@@ -16,10 +16,12 @@
           <h1>Artists</h1>
           <ul class="list-group">
             {% for artist in object_list %}
+			{% if artist.saved %}
             {% with "http://127.0.0.1:8000/artists/"|concatenate:artist.pk as url %}
               {% with url|returnLink:artist.name as link %}
               <li class="list-group-item list-group-item-dark">{{ link|safe }}</li>
               {% endwith %}{% endwith %}
+			  {% endif %}
             {% endfor %}
           </ul>
         {% endblock content %}
