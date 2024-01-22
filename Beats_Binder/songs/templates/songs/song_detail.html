@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block search %} 
+<form class="form-inline my-2 my-lg-0" action="songs/song_search_results" method="get">
+    {% csrf_token %}
+    {{search_form.as_p}}
+</form>
+{% endblock search %}
+
 {% block content %}
 <!DOCTYPE html>
     <html lang="en">
