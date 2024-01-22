@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load home_extras %}
 
-{% block search %}
-    <form action="search_results" method="get">
-        {% csrf_token %}
-        {{search_form.as_p}}
-    </form>
+{% block search %} 
+<form class="form-inline my-2 my-lg-0" action="artists/artist_search_results" method="get">
+    {% csrf_token %}
+    {{artist_search_form.as_p}}
+</form>
 {% endblock search %}
 
 <body>

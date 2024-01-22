@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load home_extras %}
 
+{% block search %} 
+<form class="form-inline my-2 my-lg-0" action="songs/song_search_results" method="get">
+    {% csrf_token %}
+    {{search_form.as_p}}
+</form>
+{% endblock search %}
 
 <head>
     <meta charset="UTF-8">
