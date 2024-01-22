@@ -11,14 +11,14 @@ Worked on design document
 ZidanniC — 2024-01-08 | 14:50
 Worked on design document
 
-
+-------------------------------------------------
 
 2024-01-09
 Hui Wen — 2024-01-09 | 10:15
 Completed database design
 Updated sitemap
 
-
+-------------------------------------------------
 
 2024-01-10
 SadatA — 2024-01-10 | 14:50
@@ -35,7 +35,7 @@ BushraR — 2024-01-10 | 23:44
 Started updating settings so that the project can connect to a database
 Updated requirements_env to have pgadmin4
 
-
+-------------------------------------------------
 
 2024-01-11 
 BushraR — 2024-01-11 | 14:11
@@ -68,3 +68,140 @@ BushraR — 2024-01-11 | 23:30
 Finished updating settings so that the project connects to a database
 Added very basic template to core and very basic template for the home page in album
 Added url and view for the album home page
+
+-------------------------------------------------
+
+2024-01-12
+HuiWenW — 2024-01-12 | 12:11, 14:50
+Updated database connection
+Updated models for artist, album, song
+Trying to extract list of IDs from the API → failed → update project outlines to change its functionalities that would be able to be developed with the API
+
+SadatA — 2024-01-12 | 14:50
+Updated design document to use a Songs app instead of a Lyrics app
+
+BushraR — 2024-01-12 | 14:50
+Added code in the notebook that would loop through artists in the API by incrementing the ID until there is an error for 100 IDs in a row
+
+ZidanniC — 2024-01-12 | 14:50
+Started bootstrap customization in songs web page
+
+-------------------------------------------------
+
+2024-01-13
+HuiWenW — 2024-01-13 | 23:33
+Project re-setup as the project concept was changed to fit the use of the API
+
+-------------------------------------------------
+
+2024-01-14
+HuiWenW — 2024-01-14 | 12:04, 14:09, 14:57, 19:58
+Set up apps, database, urls, base template, and Jupyter notebook
+Search bar on home page is functioning, able to take in an input and call the API with the input value
+Home page css updates
+Displaying Billboard API on home page
+
+BushraR — 2024-01-14 | 15:01
+Added all models
+
+SadatA — 2024-01-14 | 4:00
+Started working on artists views, urls, and templates
+
+-------------------------------------------------
+
+2024-01-15
+HuiWenW — 2024-01-15 | 20:38
+Researching and trying to implement a way to connect Django views to Javascript functions (button click)
+
+-------------------------------------------------
+
+2024-01-16
+HuiWenW — 2024-01-16 | 08:41, 14:50
+Completed searchAPI function
+Debugging API calling
+
+ZidanniC — 2024-01-16 | 14:50
+Started setting up song web app views and database interaction
+
+SadatA — 2024-01-16 | 14:50
+Connected to database and got server to run 
+
+HuiWenW — 2024-01-16 | 20:37, 21:23, 22:17
+Updated base.html to keep the navbar on all apps, separating base content and app-specific content
+Wrote project summary and launch code in readme.md
+Bootstrapped the base.html, made the webpage responsive
+
+ZidanniC — 2024-01-16 | 22:34
+Set up song views and html table, listing entries from song table
+
+-------------------------------------------------
+
+2024-01-17
+HuiWenW — 2024-01-17 | 08:41, 14:50
+Debugging search Django form
+Fixed search API, now functional, and began API data rendering
+
+ZidanniC — 2024-01-17 | 14:41
+Debugging front end
+Continued bootstrap and CSS customization of home page
+
+SadatA — 2024-01-17 | 14:42
+Debugging front end
+
+HuiWenW — 2024-01-17 | 20:17, 20:22, 21:36
+Finished API data rendering
+Implemented API call in album, artist, and song inventories; search bar not showing up on their templates
+Added paths to the search_results.html in urls.py for all apps
+
+-------------------------------------------------
+
+2024-01-18
+HuiWenW — 2024-01-18 | 11:33
+Debugged search bar
+
+SadatA — 2024-01-18 | 12:53
+Made website responsive 
+
+HuiWenW — 2024-01-18 | 14:50
+Added inventory title to search results pages → not showing up because base.html is calling the same search_results view from home for all apps
+Added specific (album, artist, track) API calls to each inventory view not showing up because base.html is calling the same search_results view from home for all apps
+
+SadatA — 2024-01-18 | 14:50
+Did detail templates for artists, songs, and album views
+
+ZidanniC — 2024-01-18 | 14:50
+Continued bootstrapping the webpage and allowed color interaction with dark/light mode button
+
+-------------------------------------------------
+
+2024-01-19
+HuiWenW — 2024-01-19 | 10:47
+Added search bar to all search results pages
+
+ZidanniC — 2024-01-19 | 14:24
+Helped configure preview audio display on webpage
+
+SadatA — 2024-01-19 | 14:50
+Set up preview audio display on the song detail pages 
+
+HuiWenW — 2024-01-19 | 14:50, 20:50
+Debugging JS dark mode button (turns back to light mode with page refresh or redirecting to another page)
+Transferred search component from base.html to individual app templates
+
+-------------------------------------------------
+
+2024-01-20
+HuiWenW — 2024-01-20 | 17:51, 22:07
+Debugged JS dark mode button (now remembers user choice for all pages)
+Debugged search endpoint; turns out RapidAPI’s Deezer API limits its search endpoint to general search
+
+-------------------------------------------------
+
+2024-01-21
+HuiWenW — 2024-01-21 | 21:31, 22:35
+Researched importing a model from another app
+General search bar component clean up
+
+SadatA — 2024-01-21 |
+Added bootstrap and css to detail views 
+
