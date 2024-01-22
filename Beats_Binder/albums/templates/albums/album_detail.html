@@ -9,7 +9,7 @@
     </html>
 <div class="container mt-4">
     <h1 class="mb-4">Name: {{ object.name }}</h1>
-    <h1 class="mb-4">Artist's Name: {{ object.artist }}</h1>
+    <h1 class="mb-4">Artist's Name: {{ object.artist.all.0.name }}</h1>
     <h1 class="mb-4">Contributors: {{ object.contributors }}</h1>
     <div class="mb-4">
         <img src="{{ object.cover }}" alt="image" class="img-fluid" width="200" height="200">

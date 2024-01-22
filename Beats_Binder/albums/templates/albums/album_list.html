@@ -21,8 +21,8 @@
               <li class="list-group-item list-group-item-dark">{{ link|safe }}
               	<form method="post">
                     {% csrf_token %}
-                    <button type="submit" name={{ album.id }}>UNSAVE</button>
-                    </form> </li>
+                    <button type="submit" name={{ album.deezer_id }}>UNSAVE</button>
+                    </form> {{ album.saved }} </li>
           {% endwith %}{% endwith %}
             {% endfor %}
           </ul>
