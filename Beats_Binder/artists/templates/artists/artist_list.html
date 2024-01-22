@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 
+{% block search %}
+    <form action="search_results" method="get">
+        {% csrf_token %}
+        {{search_form.as_p}}
+    </form>
+{% endblock search %}
 
 <body>
-	{% block content %}
-<h1>Artists</h1>
-<ul>
-{% for artist in object_list %}
-<li>{{ artist.name }}</li>
-{% endfor %}
-{% endblock content %}
-</ul>
+    {% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+          <h1>Artists</h1>
+          <ul class="list-group">
+            {% for artist in object_list %}
+              <li class="list-group-item list-group-item-dark">{{ artist.name }}</li>
+            {% endfor %}
+          </ul>
+        {% endblock content %}
+      </div>
+    </div>
+    </div>
+  </div>
 </body>
