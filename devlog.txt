@@ -221,5 +221,13 @@ Debugged search bar again, now showing up separately for each app but for all pa
 Bootstrapped the dark mode button
 Bootstrapped songs inventory list, now consistent with the styles of the other apps
 Updated devlog.txt
+Made search bar styles consistent
+Removed search bar from search results pages
+Updated site map and design document
+
+ZidanniC — 2024-01-22 | 19:51
+Debugged css and song preview
+Added logo to base template
+
 
 
