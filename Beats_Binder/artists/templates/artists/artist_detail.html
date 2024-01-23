@@ -20,9 +20,5 @@
         <img src="{{ artist.cover }}" alt="image" class="img-fluid" width="200" height="200">
     </div>
     <h1 class="mb-4">Number of Albums: {{ artist.nb_album }}</h1>
-    <h1 class="mb-4"><form method="post">
-                    {% csrf_token %}
-                    <button type="submit" name={{ artist.deezer_id }}>UNSAVE</button>
-                    </form> {{ artist.saved }} </h1>
 </div>
 {% endblock content %}

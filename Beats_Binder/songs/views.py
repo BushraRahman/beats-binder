@@ -52,6 +52,4 @@ def SongList(request):
 
 def SongDetails(request, pk):
 	song = Song.objects.get(pk=pk)
-	if request.method == 'POST':
-		modifySongSaved(list(request.POST.keys())[1])
 	return render(request, "songs/song_detail.html", context={"song": song,  "song_search_form": SongSearchForm})

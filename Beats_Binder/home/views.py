@@ -106,11 +106,6 @@ def addAlbumEntry(deezerID,saved):
         if not Artist.objects.filter(deezer_id = response["artist"]["id"]).exists():
             addArtistEntry(response["artist"]["id"],False)
         album.artist.add(Artist.objects.get(deezer_id = response["artist"]["id"]))
-        if (len(response["contributors"]) > 1):
-            for i in range(1, len(response["contributors"])-1):
-                if not Artist.objects.filter(deezer_id = response["contributors"][i]["id"]).exists():
-                    addArtistEntry(response["contributors"][i]["id"],False)
-                album.contributors.add(Artist.objects.get(deezer_id = response["contributors"][i]["id"]))
 
 def addSongEntry(deezerID, saved):
     if not Song.objects.filter(deezer_id=deezerID).exists():
@@ -132,11 +127,6 @@ def addSongEntry(deezerID, saved):
         if not Album.objects.filter(deezer_id = response["album"]["id"]).exists():
             addAlbumEntry(response["album"]["id"],False)
         song.album.add(Album.objects.get(deezer_id = response["album"]["id"]))
-        if (len(response["contributors"]) > 1):
-            for i in range(1, len(response["contributors"])-1):
-                if not Artist.objects.filter(deezer_id = response["contributors"][i]["id"]).exists():
-                    addArtistEntry(response["contributors"][i]["id"],False)
-                song.contributors.add(Artist.objects.get(deezer_id = response["contributors"][i]["id"]))
 
 def modifyArtistSaved(deezerID):
     if not Artist.objects.filter(deezer_id=deezerID).exists():

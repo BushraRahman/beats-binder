@@ -57,6 +57,4 @@ def ArtistList(request):
 
 def ArtistDetails(request, pk):
 	artist = Artist.objects.get(pk=pk)
-	if request.method == 'POST':
-		modifyArtistSaved(list(request.POST.keys())[1])
 	return render(request, "artists/artist_detail.html", context={"artist": artist,  "artist_search_form": ArtistSearchForm})

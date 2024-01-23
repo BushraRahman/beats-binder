@@ -28,9 +28,5 @@
     <h1 class="mb-4">Duration: {{ album.duration }} seconds</h1>
     <h1 class="mb-4">Release Date: {{ album.release_date }}</h1>
     <h1 class="mb-4">Record Type: {{ album.record_type }}</h1>
-    <h1 class="mb-4"><form method="post">
-                    {% csrf_token %}
-                    <button type="submit" name={{ album.deezer_id }}>UNSAVE</button>
-                    </form> {{ album.saved }} </h1>
 </div>
 {% endblock content %}

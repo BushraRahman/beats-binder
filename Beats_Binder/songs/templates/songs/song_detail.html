@@ -26,9 +26,5 @@
         <source src="{{ song.preview }}" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <h1 class="mb-4"><form method="post">
-                    {% csrf_token %}
-                    <button type="submit" name={{ song.deezer_id }}>UNSAVE</button>
-                    </form> {{ song.saved }}</h1>
 </div>
 {% endblock content %}
