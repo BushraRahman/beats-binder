@@ -50,6 +50,4 @@ def AlbumList(request):
 
 def AlbumDetails(request, pk):
 	album = Album.objects.get(pk=pk)
-	if request.method == 'POST':
-		modifyAlbumSaved(list(request.POST.keys())[1])
 	return render(request, "albums/album_detail.html", context={"album": album, 'album_search_form': AlbumSearchForm})
